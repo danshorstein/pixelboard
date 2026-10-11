@@ -1040,7 +1040,7 @@ async function refreshReveal() {
 // Stadium Announcement & Custom Message Controls
 const MESSAGE_PRESETS = {
   birthday: {
-    lines: ['WELCOME', 'LET'S CELEBRATE!'],
+    lines: ['WELCOME', "LET'S CELEBRATE!"],
     fireworks: true,
     dwell: 4
   },
