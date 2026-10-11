@@ -19,12 +19,11 @@ could build one myself. Once I saw what was possible, I kept adding features
 and got excited about what it was becoming. I’m sharing Pixelboard so other
 families can build their own and adapt it to their household.
 
-Pixelboard is designed for personal use in one household. It needs an internet
-connection for live scores. The current version fetches MLB data from MLB Stats
-API and NFL scores from ESPN’s scoreboard endpoint; it does not require
-personal MLB or NFL API keys. Provider availability and terms apply. You can
-also add an iCalendar subscription feed for a youth team. If a GameChanger
-team provides an iCalendar feed, Pixelboard can show its games and practices
+Pixelboard is designed for personal use in one household and needs an internet
+connection for live scores. It gets MLB data from MLB Stats API and NFL scores
+from ESPN’s scoreboard feed. These feeds depend on their providers’ availability
+and terms. You can also add an iCalendar subscription for a youth team. If a
+GameChanger team provides a feed, Pixelboard can show its games and practices
 alongside the other scores. Keep calendar subscription URLs private.
 
 ## What it shows
