@@ -113,7 +113,7 @@ You'll need:
 | Raspberry Pi 3 Model A+ | Other Pis supported by `rpi-rgb-led-matrix` should work but are untested |
 | Adafruit RGB Matrix Bonnet or HAT | Connects the Pi to the panels |
 | 5 V 10 A power supply for the panels | Keep it separate from the Pi's power |
-| 5 V 2.5 A supply for the Pi | |
+| 5 V 2.5 A supply for the Pi | not needed for the final display because it can get power through the hat, but hopeful when setting up the raspberry pi before connecting it |
 | 8BitDo Zero 2 controller | Paired over Bluetooth in keyboard mode |
 | microSD card | A high-endurance card is a good idea |
 
