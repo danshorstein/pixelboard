@@ -11,6 +11,22 @@ they score, goes dim at bedtime, and has seven games you play with a small
 Bluetooth controller. You run and set it up from any phone on your home Wi-Fi.
 There's no app to install and no cloud account.
 
+## Why I built it
+
+We wanted an MLB scoreboard for our son for his birthday, but the ones I found
+online were expensive and limited in what they could show or do. I figured I
+could build one myself. Once I saw what was possible, I kept adding features
+and got excited about what it was becoming. I’m sharing Pixelboard so other
+families can build their own and adapt it to their household.
+
+Pixelboard is designed for personal use in one household. It needs an internet
+connection for live scores. The current version fetches MLB data from MLB Stats
+API and NFL scores from ESPN’s scoreboard endpoint; it does not require
+personal MLB or NFL API keys. Provider availability and terms apply. You can
+also add an iCalendar subscription feed for a youth team. If a GameChanger
+team provides an iCalendar feed, Pixelboard can show its games and practices
+alongside the other scores. Keep calendar subscription URLs private.
+
 ## What it shows
 
 | | |
