@@ -1,0 +1,176 @@
+{
+  "sources": {
+    "MLB": "https://statsapi.mlb.com/api/v1.1/game/813047/feed/live",
+    "NFL": "https://site.api.espn.com/apis/site/v2/sports/football/nfl/summary?event=401772633"
+  },
+  "mlb": {
+    "gamePk": 813047,
+    "gameData": {
+      "teams": {
+        "away": {
+          "id": 112,
+          "name": "Chicago Cubs"
+        },
+        "home": {
+          "id": 158,
+          "name": "Milwaukee Brewers"
+        }
+      }
+    },
+    "liveData": {
+      "plays": {
+        "allPlays": [
+          {
+            "about": {
+              "atBatIndex": 0,
+              "isTopInning": true,
+              "isComplete": true
+            },
+            "result": {
+              "eventType": "home_run"
+            }
+          },
+          {
+            "about": {
+              "atBatIndex": 52,
+              "isTopInning": true,
+              "isComplete": true
+            },
+            "result": {
+              "eventType": "home_run"
+            }
+          },
+          {
+            "about": {
+              "atBatIndex": 65,
+              "isTopInning": true,
+              "isComplete": true
+            },
+            "result": {
+              "eventType": "home_run"
+            }
+          },
+          {
+            "about": {
+              "atBatIndex": 1,
+              "isTopInning": true,
+              "isComplete": true
+            },
+            "result": {
+              "eventType": "field_out"
+            }
+          }
+        ]
+      }
+    }
+  },
+  "nfl": {
+    "header": {
+      "id": "401772633"
+    },
+    "scoringPlays": [
+      {
+        "id": "401772633506",
+        "type": {
+          "id": "67",
+          "text": "Passing Touchdown",
+          "abbreviation": "TD"
+        },
+        "scoringType": {
+          "name": "touchdown",
+          "displayName": "Touchdown",
+          "abbreviation": "TD"
+        },
+        "team": {
+          "id": "5",
+          "displayName": "Cleveland Browns"
+        }
+      },
+      {
+        "id": "401772633836",
+        "type": {
+          "id": "67",
+          "text": "Passing Touchdown",
+          "abbreviation": "TD"
+        },
+        "scoringType": {
+          "name": "touchdown",
+          "displayName": "Touchdown",
+          "abbreviation": "TD"
+        },
+        "team": {
+          "id": "16",
+          "displayName": "Minnesota Vikings"
+        }
+      },
+      {
+        "id": "4017726332299",
+        "type": {
+          "id": "59",
+          "text": "Field Goal Good",
+          "abbreviation": "FG"
+        },
+        "scoringType": {
+          "name": "field-goal",
+          "displayName": "Field Goal",
+          "abbreviation": "FG"
+        },
+        "team": {
+          "id": "5",
+          "displayName": "Cleveland Browns"
+        }
+      },
+      {
+        "id": "4017726332640",
+        "type": {
+          "id": "68",
+          "text": "Rushing Touchdown",
+          "abbreviation": "TD"
+        },
+        "scoringType": {
+          "name": "touchdown",
+          "displayName": "Touchdown",
+          "abbreviation": "TD"
+        },
+        "team": {
+          "id": "16",
+          "displayName": "Minnesota Vikings"
+        }
+      },
+      {
+        "id": "4017726333034",
+        "type": {
+          "id": "67",
+          "text": "Passing Touchdown",
+          "abbreviation": "TD"
+        },
+        "scoringType": {
+          "name": "touchdown",
+          "displayName": "Touchdown",
+          "abbreviation": "TD"
+        },
+        "team": {
+          "id": "5",
+          "displayName": "Cleveland Browns"
+        }
+      },
+      {
+        "id": "4017726334428",
+        "type": {
+          "id": "67",
+          "text": "Passing Touchdown",
+          "abbreviation": "TD"
+        },
+        "scoringType": {
+          "name": "touchdown",
+          "displayName": "Touchdown",
+          "abbreviation": "TD"
+        },
+        "team": {
+          "id": "16",
+          "displayName": "Minnesota Vikings"
+        }
+      }
+    ]
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "id": "wide-192x32-p4",
+  "label": "Extra-Wide 192x32 P4",
+  "description": "Three chained 64x32 P4 panels for two games side by side; intended for a Pi 3, 4, or 5 with a triple-chain driver board.",
+  "targetClass": "linux-sbc-hub75@1",
+  "logical": {
+    "width": 192,
+    "height": 32
+  },
+  "physical": {
+    "widthMm": 765,
+    "heightMm": 127,
+    "pixelPitchMm": 4
+  },
+  "orientation": "landscape",
+  "capabilities": {
+    "color": "rgb888",
+    "maxAnimationFps": 30,
+    "brightnessRange": [10, 100],
+    "memoryBudgetMb": 150,
+    "supportedElements": [
+      "text",
+      "box",
+      "line",
+      "sprite",
+      "basesDiamond",
+      "outsDots",
+      "countText",
+      "scrollText",
+      "clock"
+    ]
+  },
+  "validationRules": [
+    "resolution-match",
+    "font-min-size",
+    "asset-format",
+    "memory-estimate",
+    "effect-support",
+    "network-assumption",
+    "config-complete"
+  ]
+}

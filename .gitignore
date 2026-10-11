@@ -1,0 +1,18 @@
+.venv/
+node_modules/
+__pycache__/
+*.py[cod]
+data/
+dist/
+output/
+test-results/
+frontend/public/private-assets/team-logos/manifest.json
+frontend/public/private-assets/team-logos/*.png
+frontend/public/private-assets/team-logos/nfl-staging/
+
+# Local slicer scratch output; keep hardware sources and review evidence.
+/result.json
+hardware/**/renders/_temp_render.stl
+
+# macOS folder metadata
+.DS_Store

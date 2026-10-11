@@ -1,0 +1,26 @@
+[Unit]
+Description=Pixelboard MLB Scoreboard
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=root
+# Keep this process off CPU 3 so the rgbmatrix realtime refresh thread
+# (which the library pins to the highest-numbered core) runs uncontended.
+# Pair with `isolcpus=3` on the kernel cmdline.
+CPUAffinity=0 1 2
+WorkingDirectory=/opt/pixelboard
+Environment=PYTHONPATH=/opt/pixelboard/runtime
+ExecStart=/opt/pixelboard/.venv/bin/python -m scoreboard_device --root /opt/pixelboard run
+Restart=always
+RestartSec=5
+TimeoutStopSec=15
+KillSignal=SIGTERM
+ProtectHome=false
+ProtectSystem=full
+ReadWritePaths=/var/lib/pixelboard /opt/pixelboard/state /opt/pixelboard/config
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

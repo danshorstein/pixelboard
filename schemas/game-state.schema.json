@@ -1,0 +1,231 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scoreboard.local/schemas/game-state.schema.json",
+  "title": "Normalized MLB Game State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "gameId",
+    "gameNumber",
+    "doubleheader",
+    "home",
+    "away",
+    "status",
+    "startTimeUtc",
+    "startTimeLocal",
+    "source"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "gameId": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "gameNumber": { "type": "integer", "minimum": 1, "maximum": 9 },
+    "doubleheader": { "type": "boolean" },
+    "home": { "$ref": "#/$defs/team" },
+    "away": { "$ref": "#/$defs/team" },
+    "status": {
+      "enum": [
+        "pregame",
+        "in_progress",
+        "final",
+        "delayed",
+        "postponed",
+        "suspended",
+        "canceled",
+        "unknown"
+      ]
+    },
+    "statusDetail": { "type": ["string", "null"], "maxLength": 160 },
+    "inning": {
+      "oneOf": [
+        { "type": "integer", "minimum": 1, "maximum": 99 },
+        { "type": "null" }
+      ]
+    },
+    "inningHalf": {
+      "oneOf": [
+        { "enum": ["top", "bottom", "middle", "end"] },
+        { "type": "null" }
+      ]
+    },
+    "outs": {
+      "oneOf": [
+        { "type": "integer", "minimum": 0, "maximum": 3 },
+        { "type": "null" }
+      ]
+    },
+    "count": {
+      "oneOf": [
+        { "$ref": "#/$defs/count" },
+        { "type": "null" }
+      ]
+    },
+    "bases": {
+      "oneOf": [
+        { "$ref": "#/$defs/bases" },
+        { "type": "null" }
+      ]
+    },
+    "startTimeUtc": {
+      "oneOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
+      ]
+    },
+    "startTimeLocal": {
+      "oneOf": [
+        { "type": "string", "format": "date-time" },
+        { "type": "null" }
+      ]
+    },
+    "probables": {
+      "oneOf": [
+        { "$ref": "#/$defs/probables" },
+        { "type": "null" }
+      ]
+    },
+    "currentBatter": {
+      "oneOf": [
+        { "$ref": "#/$defs/livePlayer" },
+        { "type": "null" }
+      ]
+    },
+    "currentPitcher": {
+      "oneOf": [
+        { "$ref": "#/$defs/livePlayer" },
+        { "type": "null" }
+      ]
+    },
+    "lastPitch": {
+      "oneOf": [
+        { "$ref": "#/$defs/lastPitch" },
+        { "type": "null" }
+      ]
+    },
+    "lastPlay": {
+      "oneOf": [
+        { "$ref": "#/$defs/lastPlay" },
+        { "type": "null" }
+      ]
+    },
+    "battedBall": {
+      "oneOf": [
+        { "$ref": "#/$defs/battedBall" },
+        { "type": "null" }
+      ]
+    },
+    "eventRevision": { "type": ["string", "null"], "maxLength": 160 },
+    "venue": { "type": ["string", "null"], "maxLength": 200 },
+    "source": { "$ref": "#/$defs/source" }
+  },
+  "$defs": {
+    "team": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "abbr", "name", "score"],
+      "properties": {
+        "id": { "type": ["integer", "string"] },
+        "abbr": { "type": "string", "pattern": "^[A-Z0-9]{2,5}$" },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "score": {
+          "oneOf": [
+            { "type": "integer", "minimum": 0, "maximum": 999 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "count": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["balls", "strikes"],
+      "properties": {
+        "balls": { "type": "integer", "minimum": 0, "maximum": 4 },
+        "strikes": { "type": "integer", "minimum": 0, "maximum": 3 }
+      }
+    },
+    "bases": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["first", "second", "third"],
+      "properties": {
+        "first": { "type": "boolean" },
+        "second": { "type": "boolean" },
+        "third": { "type": "boolean" }
+      }
+    },
+    "probables": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["home", "away"],
+      "properties": {
+        "home": { "type": ["string", "null"], "maxLength": 100 },
+        "away": { "type": ["string", "null"], "maxLength": 100 }
+      }
+    },
+    "livePlayer": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": ["integer", "string"] },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "handedness": {
+          "oneOf": [
+            { "enum": ["L", "R", "S"] },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "lastPitch": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["eventId", "call", "type"],
+      "properties": {
+        "eventId": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "call": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "type": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "code": { "type": ["string", "null"], "maxLength": 20 },
+        "startSpeedMph": { "type": ["number", "null"], "minimum": 0, "maximum": 150 },
+        "endSpeedMph": { "type": ["number", "null"], "minimum": 0, "maximum": 150 },
+        "zone": { "type": ["integer", "null"], "minimum": 1, "maximum": 99 }
+      }
+    },
+    "lastPlay": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["playId", "event", "eventType"],
+      "properties": {
+        "playId": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "event": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "eventType": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "description": { "type": ["string", "null"], "maxLength": 500 },
+        "displayText": { "type": ["string", "null"], "maxLength": 100 },
+        "rbi": { "type": ["integer", "null"], "minimum": 0, "maximum": 4 },
+        "scoringPlay": { "type": "boolean" }
+      }
+    },
+    "battedBall": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "exitVelocityMph": { "type": ["number", "null"], "minimum": 0, "maximum": 150 },
+        "launchAngleDeg": { "type": ["number", "null"], "minimum": -90, "maximum": 90 },
+        "estimatedDistanceFt": { "type": ["number", "null"], "minimum": 0, "maximum": 1000 },
+        "trajectory": { "type": ["string", "null"], "maxLength": 100 }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "fetchedUtc", "mode", "freshness"],
+      "properties": {
+        "provider": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "fetchedUtc": { "type": "string", "format": "date-time" },
+        "mode": { "enum": ["live", "demo", "replay"] },
+        "freshness": { "enum": ["fresh", "stale", "failed"] }
+      }
+    }
+  }
+}

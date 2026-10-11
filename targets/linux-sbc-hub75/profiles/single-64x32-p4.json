@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "id": "single-64x32-p4",
+  "label": "Single Panel 64x32 P4",
+  "description": "One affordable 64x32 P4 panel for the simplest wiring; intended for compact, score-first layouts without a count.",
+  "targetClass": "linux-sbc-hub75@1",
+  "logical": {
+    "width": 64,
+    "height": 32
+  },
+  "physical": {
+    "widthMm": 255,
+    "heightMm": 127,
+    "pixelPitchMm": 4
+  },
+  "orientation": "landscape",
+  "capabilities": {
+    "color": "rgb888",
+    "maxAnimationFps": 30,
+    "brightnessRange": [10, 100],
+    "memoryBudgetMb": 150,
+    "supportedElements": [
+      "text",
+      "box",
+      "line",
+      "sprite",
+      "basesDiamond",
+      "outsDots",
+      "countText",
+      "scrollText",
+      "clock"
+    ]
+  },
+  "validationRules": [
+    "resolution-match",
+    "font-min-size",
+    "asset-format",
+    "memory-estimate",
+    "effect-support",
+    "network-assumption",
+    "config-complete"
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "schemaVersion": "1.0",
+  "id": "pixelboard-user-logo-pack",
+  "private": true,
+  "assets": [
+    {
+      "teamId": "demo-team",
+      "abbr": "DEM",
+      "width": 16,
+      "height": 16,
+      "path": "DEM-16.png",
+      "sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+      "source": "Record the source or license for this exact file",
+      "usageStatus": "owner-provided",
+      "licenseNote": "Confirm rights before distributing any artifact containing this asset."
+    }
+  ]
+}

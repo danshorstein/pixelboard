@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scoreboard.local/schemas/artifact-manifest.schema.json",
+  "title": "Scoreboard Device Artifact Manifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "kind", "buildId", "builtUtc", "project", "target", "versions", "inputDigest", "source", "requiredRuntime", "files"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "kind": { "const": "scoreboard-device-artifact" },
+    "buildId": { "type": "string", "minLength": 6 },
+    "builtUtc": { "type": "string", "format": "date-time" },
+    "project": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "version"],
+      "properties": { "id": { "type": "string" }, "version": { "type": "integer", "minimum": 1 } }
+    },
+    "target": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["profileId", "targetClass"],
+      "properties": { "profileId": { "type": "string" }, "targetClass": { "type": "string" } }
+    },
+    "versions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["adapter", "runtime", "displayDefinition", "projectSchema", "driverCommit", "driverSourceSha256"],
+      "properties": {
+        "adapter": { "type": "string" },
+        "runtime": { "type": "string" },
+        "displayDefinition": { "type": "string" },
+        "projectSchema": { "type": "string" },
+        "driverCommit": { "type": "string", "pattern": "^[a-f0-9]{40}$" },
+        "driverSourceSha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" }
+      }
+    },
+    "inputDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["commit", "dirty"],
+      "properties": {
+        "commit": { "type": "string", "pattern": "^(?:[a-f0-9]{40}|unknown)$" },
+        "dirty": { "type": "boolean" }
+      }
+    },
+    "requiredRuntime": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["os", "python", "network", "servicePort"],
+      "properties": {
+        "os": { "type": "string" },
+        "python": { "type": "string" },
+        "network": { "type": "string" },
+        "servicePort": { "type": "integer", "minimum": 1, "maximum": 65535 }
+      }
+    },
+    "files": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["sha256", "bytes"],
+        "properties": {
+          "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+          "bytes": { "type": "integer", "minimum": 0 }
+        }
+      }
+    }
+  }
+}

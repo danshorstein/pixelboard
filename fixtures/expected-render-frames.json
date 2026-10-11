@@ -1,0 +1,188 @@
+[
+  {
+    "name": "live-favorite",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "elapsedMs": 750,
+    "sha256": "340c9afb7cd278744e666ea3963de0c1e6a6ee8f896984fbd784da0e0f4f3d25"
+  },
+  {
+    "name": "live-held",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "transportHeld": true,
+    "elapsedMs": 750,
+    "sha256": "2398ebfe226ed0da80383767197d3d7ba50e609b83875c4bd124b133eec9e0c3"
+  },
+  {
+    "name": "broadcast-v2",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "broadcast",
+    "elapsedMs": 750,
+    "sha256": "21b2973120c5418ab3db90b3c115a7ae253a34402de5d87d815268b6fa38021a"
+  },
+  {
+    "name": "live-game-logos",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "gameLogos": true,
+    "elapsedMs": 750,
+    "sha256": "248fa4b11e0ee841f8d9379cc17bc678326727e69ff252d691c3c129d18ce231"
+  },
+  {
+    "name": "pregame",
+    "scene": "pregame",
+    "gameId": "mlb-2026-07-15-PIT-PHI-1",
+    "elapsedMs": 0,
+    "sha256": "3c5b4344a4fed023839cabc623c1af83d8e375657762755bdf0cae128d53ed19"
+  },
+  {
+    "name": "final",
+    "scene": "final",
+    "gameId": "mlb-2026-07-15-BOS-NYY-1",
+    "elapsedMs": 0,
+    "sha256": "e3635bc87ea79d83c4d7f08a84cce5e405b74bf6c298c6ce328417e6f30fbbe0"
+  },
+  {
+    "name": "rain-delay",
+    "scene": "statusOnly",
+    "gameId": "mlb-2026-07-15-CHC-STL-rain-delay",
+    "elapsedMs": 1600,
+    "sha256": "29c8b61e1592dd11533e50de623aecea63ed9402b0fc66ce7bd27773a41448b5"
+  },
+  {
+    "name": "idle",
+    "scene": "idle",
+    "elapsedMs": 0,
+    "sha256": "c385ff2435a0d7d770ab3146e1ff9d8df48ce6a632670badc432a5378a61cbbb"
+  },
+  {
+    "name": "standings-fallback",
+    "scene": "standings",
+    "standingAbbr": "WSH",
+    "elapsedMs": 0,
+    "sha256": "b0e38f354f5cc001e6c81e70e6810412364651daa958fba614a6e97dccd42606"
+  },
+  {
+    "name": "standings-logo",
+    "scene": "standings",
+    "standingAbbr": "WSH",
+    "logo": true,
+    "elapsedMs": 0,
+    "sha256": "d6afaabbf44499fb91b7669e2db3b486556e58870ba4dbd40287a68813dd0df5"
+  },
+  {
+    "name": "final-game-logos",
+    "scene": "final",
+    "gameId": "mlb-2026-07-15-BOS-NYY-1",
+    "gameLogos": true,
+    "elapsedMs": 0,
+    "sha256": "5eecdb6f504d1b3c8f9d19093ed6658aad1da6d3062f94b3ea5ae7affdab3e7d"
+  },
+  {
+    "name": "broadcastRows-live",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "broadcastRows",
+    "gameLogos": true,
+    "elapsedMs": 750,
+    "sha256": "f1a5c1ffd96cf568a2545968961e5f8d0b452dab986ec2907cd4ebddd18c2279"
+  },
+  {
+    "name": "broadcastRows-final",
+    "scene": "final",
+    "gameId": "mlb-2026-07-15-BOS-NYY-1",
+    "layoutPreset": "broadcastRows",
+    "gameLogos": true,
+    "elapsedMs": 750,
+    "sha256": "2036b693893984e3d1291bd1b3609e84a0518ce9f53d9e721cd13f0aa178c2c3"
+  },
+  {
+    "name": "broadcastLogos-live",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "broadcastLogos",
+    "gameLogos": true,
+    "elapsedMs": 750,
+    "sha256": "f7fce086fda852a23c57a7696e7f0b2e9e2818f926519d190c1343510cec8a9c"
+  },
+  {
+    "name": "broadcastLogos-final",
+    "scene": "final",
+    "gameId": "mlb-2026-07-15-BOS-NYY-1",
+    "layoutPreset": "broadcastLogos",
+    "gameLogos": true,
+    "elapsedMs": 750,
+    "sha256": "571c5559e201236e45549bf299eefea640631492e30f76dacfa184524c934ec6"
+  },
+  {
+    "name": "classic-black-logos",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "classic",
+    "gameLogos": true,
+    "logoTone": "black",
+    "elapsedMs": 750,
+    "sha256": "d244aa44b816849a538cce32b1c20eb87880b0a4ca61546d0706930c1466a162"
+  },
+  {
+    "name": "classic-dark-logos",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "classic",
+    "gameLogos": true,
+    "logoTone": "dark",
+    "elapsedMs": 750,
+    "sha256": "46a8c0bc2908519eecac6d3aeea23d599d3e2c188bd94efcb6c830e1101fc4c4"
+  },
+  {
+    "name": "broadcastRows-black-logos",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "broadcastRows",
+    "gameLogos": true,
+    "logoTone": "black",
+    "elapsedMs": 750,
+    "sha256": "f1a5c1ffd96cf568a2545968961e5f8d0b452dab986ec2907cd4ebddd18c2279"
+  },
+  {
+    "name": "broadcastRows-dark-logos",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "broadcastRows",
+    "gameLogos": true,
+    "logoTone": "dark",
+    "elapsedMs": 750,
+    "sha256": "f1a5c1ffd96cf568a2545968961e5f8d0b452dab986ec2907cd4ebddd18c2279"
+  },
+  {
+    "name": "broadcastLogos-black-logos",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "broadcastLogos",
+    "gameLogos": true,
+    "logoTone": "black",
+    "elapsedMs": 750,
+    "sha256": "060451affd372f47321ffd473757df81a07521728f893b1e79cf495a44797178"
+  },
+  {
+    "name": "broadcastLogos-dark-logos",
+    "scene": "live",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "layoutPreset": "broadcastLogos",
+    "gameLogos": true,
+    "logoTone": "dark",
+    "elapsedMs": 750,
+    "sha256": "048ae324a398128d54f499973ba494f60ef9e9331522d6d782ebe55304697901"
+  },
+  {
+    "name": "standings-black-logo",
+    "scene": "standings",
+    "standingAbbr": "WSH",
+    "logo": true,
+    "logoTone": "black",
+    "elapsedMs": 0,
+    "sha256": "0b4893f0692e2079f0a061ec6d04839c11ecb9ab7dbe6a9ba371ba351abbb64c"
+  }
+]

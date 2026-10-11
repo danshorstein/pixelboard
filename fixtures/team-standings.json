@@ -1,0 +1,31 @@
+[
+  {
+    "schemaVersion": "1.0",
+    "standingsId": "demo-local-team-2026-spring",
+    "date": "2026-05-17",
+    "league": "NL",
+    "division": {
+      "id": "demo-local-league",
+      "name": "Sample League"
+    },
+    "teams": [
+      {
+        "rank": 1,
+        "team": {
+          "id": "sample-team",
+          "abbr": "RIV",
+          "name": "River Otters"
+        },
+        "wins": 5,
+        "losses": 2,
+        "gamesBack": 0
+      }
+    ],
+    "source": {
+      "provider": "local-manual",
+      "fetchedUtc": "2026-05-17T12:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  }
+]

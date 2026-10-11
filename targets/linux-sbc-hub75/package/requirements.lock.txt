@@ -1,0 +1,11 @@
+anyio==4.14.2
+certifi==2026.6.17
+Cython==3.2.8
+h11==0.16.0
+httpcore==1.0.9
+httpx==0.28.1
+idna==3.18
+packaging==26.2
+pathspec==1.1.1
+scikit-build-core==1.0.3
+typing_extensions==4.16.0

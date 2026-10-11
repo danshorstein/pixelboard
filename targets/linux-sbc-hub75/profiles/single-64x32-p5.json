@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "id": "single-64x32-p5",
+  "label": "Single Panel 64x32 P5",
+  "description": "One 64x32 P5 panel with larger LEDs for a compact score-first display viewed from farther away.",
+  "targetClass": "linux-sbc-hub75@1",
+  "logical": {
+    "width": 64,
+    "height": 32
+  },
+  "physical": {
+    "widthMm": 318,
+    "heightMm": 158,
+    "pixelPitchMm": 5
+  },
+  "orientation": "landscape",
+  "capabilities": {
+    "color": "rgb888",
+    "maxAnimationFps": 30,
+    "brightnessRange": [10, 100],
+    "memoryBudgetMb": 150,
+    "supportedElements": [
+      "text",
+      "box",
+      "line",
+      "sprite",
+      "basesDiamond",
+      "outsDots",
+      "countText",
+      "scrollText",
+      "clock"
+    ]
+  },
+  "validationRules": [
+    "resolution-match",
+    "font-min-size",
+    "asset-format",
+    "memory-estimate",
+    "effect-support",
+    "network-assumption",
+    "config-complete"
+  ]
+}

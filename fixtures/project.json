@@ -1,0 +1,66 @@
+{
+  "schemaVersion": "1.2",
+  "id": "pixelboard_m1_scoreboard",
+  "name": "Pixelboard Sports Display",
+  "description": "A configurable sports display for an RGB LED matrix.",
+  "profileId": "ticker-128x32-p4",
+  "displayDefinitionId": "mlb-classic@1.2",
+  "timezone": "America/New_York",
+  "favorites": [
+    "WSH",
+    "PHI"
+  ],
+  "rotation": {
+    "favoriteDwellSec": 30,
+    "otherDwellSec": 12,
+    "liveFirst": true,
+    "favoritesFirst": true,
+    "standings": {
+      "enabled": true,
+      "divisions": [
+        "NL East"
+      ],
+      "afterEveryGameScreens": 4,
+      "teamDwellSec": 4,
+      "favoriteTeamDwellSec": 6
+    }
+  },
+  "data": {
+    "provider": "mlb-stats-api",
+    "mode": "live",
+    "refreshSecLive": 10,
+    "refreshSecPregame": 60,
+    "refreshSecIdle": 300,
+    "rolloverLocalTime": "03:00"
+  },
+  "quietHours": {
+    "enabled": true,
+    "start": "21:00",
+    "end": "06:00",
+    "behavior": "dim"
+  },
+  "brightness": {
+    "normal": 35,
+    "dim": 10
+  },
+  "reveal": {
+    "lines": [
+      "WELCOME TO THE BALLPARK",
+      "LET'S PLAY BALL"
+    ],
+    "lineDwellSec": 4,
+    "fireworksDwellSec": 10
+  },
+  "recap": {
+    "morningStartLocal": "07:00",
+    "morningEndLocal": "09:00",
+    "searchDays": 14,
+    "dwellSec": 8
+  },
+  "designOverrides": {},
+  "meta": {
+    "owner": "Pixelboard User",
+    "version": 1,
+    "modified": "2026-10-10T12:00:00Z"
+  }
+}

@@ -1,0 +1,413 @@
+[
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-MIA-WSH-1",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 120,
+      "abbr": "WSH",
+      "name": "Nationals",
+      "score": 3
+    },
+    "away": {
+      "id": 146,
+      "abbr": "MIA",
+      "name": "Marlins",
+      "score": 2
+    },
+    "status": "in_progress",
+    "inning": 7,
+    "inningHalf": "top",
+    "outs": 2,
+    "count": {
+      "balls": 3,
+      "strikes": 1
+    },
+    "bases": {
+      "first": true,
+      "second": false,
+      "third": true
+    },
+    "startTimeUtc": "2026-07-15T18:05:00Z",
+    "startTimeLocal": "2026-07-15T14:05:00-04:00",
+    "probables": {
+      "home": "MacKenzie Gore",
+      "away": "Sandy Alcantara"
+    },
+    "currentBatter": {
+      "id": 665489,
+      "name": "Xavier Edwards",
+      "handedness": "S"
+    },
+    "currentPitcher": {
+      "id": 669022,
+      "name": "MacKenzie Gore",
+      "handedness": "L"
+    },
+    "lastPitch": {
+      "eventId": "demo-pitch-7-top-31",
+      "call": "Ball",
+      "type": "Four-Seam Fastball",
+      "code": "FF",
+      "startSpeedMph": 97.2,
+      "endSpeedMph": 88.6,
+      "zone": 12
+    },
+    "lastPlay": null,
+    "battedBall": null,
+    "eventRevision": "demo-7-top-31",
+    "venue": "Nationals Park",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-PIT-PHI-1",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 143,
+      "abbr": "PHI",
+      "name": "Phillies",
+      "score": null
+    },
+    "away": {
+      "id": 134,
+      "abbr": "PIT",
+      "name": "Pirates",
+      "score": null
+    },
+    "status": "pregame",
+    "inning": null,
+    "inningHalf": null,
+    "outs": null,
+    "count": null,
+    "bases": null,
+    "startTimeUtc": "2026-07-15T23:05:00Z",
+    "startTimeLocal": "2026-07-15T19:05:00-04:00",
+    "probables": {
+      "home": "Zack Wheeler",
+      "away": "Paul Skenes"
+    },
+    "venue": "Citizens Bank Park",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-BOS-NYY-1",
+    "gameNumber": 1,
+    "doubleheader": true,
+    "home": {
+      "id": 147,
+      "abbr": "NYY",
+      "name": "Yankees",
+      "score": 5
+    },
+    "away": {
+      "id": 111,
+      "abbr": "BOS",
+      "name": "Red Sox",
+      "score": 3
+    },
+    "status": "final",
+    "inning": 9,
+    "inningHalf": "end",
+    "outs": null,
+    "count": null,
+    "bases": null,
+    "startTimeUtc": "2026-07-15T15:05:00Z",
+    "startTimeLocal": "2026-07-15T11:05:00-04:00",
+    "probables": {
+      "home": "Carlos Rodon",
+      "away": "Garrett Crochet"
+    },
+    "venue": "Yankee Stadium",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-BOS-NYY-2",
+    "gameNumber": 2,
+    "doubleheader": true,
+    "home": {
+      "id": 147,
+      "abbr": "NYY",
+      "name": "Yankees",
+      "score": 1
+    },
+    "away": {
+      "id": 111,
+      "abbr": "BOS",
+      "name": "Red Sox",
+      "score": 2
+    },
+    "status": "in_progress",
+    "inning": 5,
+    "inningHalf": "bottom",
+    "outs": 1,
+    "count": {
+      "balls": 1,
+      "strikes": 2
+    },
+    "bases": {
+      "first": false,
+      "second": true,
+      "third": false
+    },
+    "startTimeUtc": "2026-07-15T19:05:00Z",
+    "startTimeLocal": "2026-07-15T15:05:00-04:00",
+    "probables": {
+      "home": "Will Warren",
+      "away": "Brayan Bello"
+    },
+    "venue": "Yankee Stadium",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-LAD-SD-1",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 135,
+      "abbr": "SD",
+      "name": "Padres",
+      "score": 6
+    },
+    "away": {
+      "id": 119,
+      "abbr": "LAD",
+      "name": "Dodgers",
+      "score": 6
+    },
+    "status": "in_progress",
+    "inning": 11,
+    "inningHalf": "top",
+    "outs": 0,
+    "count": {
+      "balls": 0,
+      "strikes": 0
+    },
+    "bases": {
+      "first": false,
+      "second": true,
+      "third": false
+    },
+    "startTimeUtc": "2026-07-15T17:40:00Z",
+    "startTimeLocal": "2026-07-15T13:40:00-04:00",
+    "probables": {
+      "home": "Michael King",
+      "away": "Yoshinobu Yamamoto"
+    },
+    "venue": "Petco Park",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-CLE-DET-missing-optionals",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 116,
+      "abbr": "DET",
+      "name": "Tigers",
+      "score": 4
+    },
+    "away": {
+      "id": 114,
+      "abbr": "CLE",
+      "name": "Guardians",
+      "score": 2
+    },
+    "status": "in_progress",
+    "inning": 6,
+    "inningHalf": "bottom",
+    "outs": 2,
+    "startTimeUtc": "2026-07-15T18:10:00Z",
+    "startTimeLocal": "2026-07-15T14:10:00-04:00",
+    "venue": "Comerica Park",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-CHC-STL-rain-delay",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 138,
+      "abbr": "STL",
+      "name": "Cardinals",
+      "score": 2
+    },
+    "away": {
+      "id": 112,
+      "abbr": "CHC",
+      "name": "Cubs",
+      "score": 1
+    },
+      "status": "delayed",
+      "statusDetail": "Rain delay",
+    "inning": 4,
+    "inningHalf": "middle",
+    "outs": null,
+    "count": null,
+    "bases": null,
+    "startTimeUtc": "2026-07-15T19:15:00Z",
+    "startTimeLocal": "2026-07-15T15:15:00-04:00",
+    "venue": "Busch Stadium",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-SF-COL-postponed",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 115,
+      "abbr": "COL",
+      "name": "Rockies",
+      "score": null
+    },
+    "away": {
+      "id": 137,
+      "abbr": "SF",
+      "name": "Giants",
+      "score": null
+    },
+      "status": "postponed",
+      "statusDetail": "Postponed",
+    "startTimeUtc": "2026-07-15T22:40:00Z",
+    "startTimeLocal": "2026-07-15T18:40:00-04:00",
+    "venue": "Coors Field",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-TOR-BAL-suspended",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 110,
+      "abbr": "BAL",
+      "name": "Orioles",
+      "score": 4
+    },
+    "away": {
+      "id": 141,
+      "abbr": "TOR",
+      "name": "Blue Jays",
+      "score": 4
+    },
+    "status": "suspended",
+    "inning": 6,
+    "inningHalf": "end",
+    "outs": null,
+    "count": null,
+    "bases": null,
+    "startTimeUtc": "2026-07-15T17:35:00Z",
+    "startTimeLocal": "2026-07-15T13:35:00-04:00",
+    "venue": "Oriole Park at Camden Yards",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-ATH-TEX-canceled",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 140,
+      "abbr": "TEX",
+      "name": "Rangers",
+      "score": null
+    },
+    "away": {
+      "id": 133,
+      "abbr": "ATH",
+      "name": "Athletics",
+      "score": null
+    },
+    "status": "canceled",
+    "startTimeUtc": "2026-07-15T18:35:00Z",
+    "startTimeLocal": "2026-07-15T14:35:00-04:00",
+    "venue": "Globe Life Field",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  },
+  {
+    "schemaVersion": "1.0",
+    "gameId": "mlb-2026-07-15-KC-MIN-unknown",
+    "gameNumber": 1,
+    "doubleheader": false,
+    "home": {
+      "id": 142,
+      "abbr": "MIN",
+      "name": "Twins",
+      "score": null
+    },
+    "away": {
+      "id": 118,
+      "abbr": "KC",
+      "name": "Royals",
+      "score": null
+    },
+    "status": "unknown",
+    "startTimeUtc": "2026-07-15T16:10:00Z",
+    "startTimeLocal": "2026-07-15T12:10:00-04:00",
+    "venue": "Target Field",
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  }
+]

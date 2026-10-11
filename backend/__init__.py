@@ -1,0 +1,1 @@
+"""Local Scoreboard Studio service."""

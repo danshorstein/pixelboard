@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scoreboard.local/schemas/data-snapshot.schema.json",
+  "title": "Scoreboard Data Snapshot",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "date", "mode", "games", "standings", "source"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "date": { "type": "string", "format": "date" },
+    "mode": { "enum": ["live", "demo", "replay"] },
+    "games": {
+      "type": "array",
+      "items": { "$ref": "https://scoreboard.local/schemas/game-state.schema.json" }
+    },
+    "standings": {
+      "type": "array",
+      "items": { "$ref": "https://scoreboard.local/schemas/standings-state.schema.json" }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "fetchedUtc", "freshness", "refreshSec", "error"],
+      "properties": {
+        "provider": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "fetchedUtc": { "type": "string", "format": "date-time" },
+        "freshness": { "enum": ["fresh", "stale", "failed"] },
+        "refreshSec": { "type": "integer", "minimum": 0, "maximum": 86400 },
+        "error": { "type": ["string", "null"], "maxLength": 2000 }
+      }
+    }
+  }
+}

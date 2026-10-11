@@ -1,0 +1,412 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scoreboard.local/schemas/project.schema.json",
+  "title": "Scoreboard Project",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "id",
+    "name",
+    "profileId",
+    "displayDefinitionId",
+    "favorites",
+    "rotation",
+    "data",
+    "quietHours",
+    "brightness",
+    "designOverrides",
+    "meta"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "enum": [
+        "1.0",
+        "1.1",
+        "1.2"
+      ]
+    },
+    "id": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9_-]{2,63}$"
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "description": {
+      "type": "string",
+      "maxLength": 500
+    },
+    "profileId": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "displayDefinitionId": {
+      "type": "string",
+      "pattern": "^[a-z][a-z0-9-]*@[0-9]+\\.[0-9]+$"
+    },
+    "timezone": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "favorites": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "pattern": "^[A-Z0-9]{2,5}$"
+      }
+    },
+    "rotation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "favoriteDwellSec",
+        "otherDwellSec",
+        "liveFirst",
+        "favoritesFirst"
+      ],
+      "properties": {
+        "favoriteDwellSec": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300
+        },
+        "otherDwellSec": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 300
+        },
+        "liveFirst": {
+          "type": "boolean"
+        },
+        "favoritesFirst": {
+          "type": "boolean"
+        },
+        "pinnedGameId": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "minLength": 1
+        },
+        "standings": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "enabled",
+            "divisions",
+            "afterEveryGameScreens",
+            "teamDwellSec",
+            "favoriteTeamDwellSec"
+          ],
+          "properties": {
+            "enabled": {
+              "type": "boolean"
+            },
+            "divisions": {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "minLength": 1,
+                "maxLength": 100
+              }
+            },
+            "afterEveryGameScreens": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 30
+            },
+            "teamDwellSec": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 60
+            },
+            "favoriteTeamDwellSec": {
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 60
+            }
+          }
+        }
+      }
+    },
+    "data": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "provider",
+        "mode",
+        "refreshSecLive",
+        "refreshSecPregame",
+        "refreshSecIdle",
+        "rolloverLocalTime"
+      ],
+      "properties": {
+        "provider": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "mode": {
+          "enum": [
+            "live",
+            "demo",
+            "replay"
+          ]
+        },
+        "refreshSecLive": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 300
+        },
+        "refreshSecPregame": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 3600
+        },
+        "refreshSecIdle": {
+          "type": "integer",
+          "minimum": 5,
+          "maximum": 86400
+        },
+        "rolloverLocalTime": {
+          "type": "string",
+          "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"
+        }
+      }
+    },
+    "quietHours": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "enabled",
+        "start",
+        "end",
+        "behavior"
+      ],
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "start": {
+          "type": "string",
+          "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "end": {
+          "type": "string",
+          "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "behavior": {
+          "enum": [
+            "sleep",
+            "dim"
+          ]
+        }
+      }
+    },
+    "controllerPreferences": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "wakeDurationSec": {
+          "type": "integer",
+          "minimum": 10,
+          "maximum": 600
+        }
+      }
+    },
+    "brightness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "normal",
+        "dim"
+      ],
+      "properties": {
+        "normal": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        },
+        "dim": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 100
+        }
+      }
+    },
+    "reveal": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "lines",
+        "lineDwellSec",
+        "fireworksDwellSec"
+      ],
+      "properties": {
+        "lines": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 4,
+          "items": {
+            "type": "string",
+            "minLength": 1,
+            "maxLength": 60
+          }
+        },
+        "lineDwellSec": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 30
+        },
+        "fireworksDwellSec": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60
+        }
+      }
+    },
+    "recap": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "morningStartLocal",
+        "morningEndLocal",
+        "searchDays",
+        "dwellSec"
+      ],
+      "properties": {
+        "morningStartLocal": {
+          "type": "string",
+          "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "morningEndLocal": {
+          "type": "string",
+          "pattern": "^(?:[01][0-9]|2[0-3]):[0-5][0-9]$"
+        },
+        "searchDays": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 45
+        },
+        "dwellSec": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 60
+        }
+      }
+    },
+    "designOverrides": {
+      "type": "object",
+      "additionalProperties": {
+        "$ref": "#/$defs/overrideValue"
+      }
+    },
+    "meta": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "owner",
+        "version",
+        "modified"
+      ],
+      "properties": {
+        "owner": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 100
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "modified": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    },
+    "nfl": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "enabled": {
+          "type": "boolean"
+        },
+        "favorites": {
+          "type": "array",
+          "maxItems": 500,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 64
+          }
+        },
+        "favoritesOnly": {
+          "type": "boolean"
+        },
+        "hiddenGames": {
+          "type": "array",
+          "maxItems": 500,
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "maxLength": 64
+          }
+        },
+        "dwellSec": {
+          "type": "integer",
+          "minimum": 3,
+          "maximum": 60
+        },
+        "liveFirst": {
+          "type": "boolean"
+        },
+        "liveOnly": {
+          "type": "boolean"
+        },
+        "hideFinal": {
+          "type": "boolean"
+        },
+        "layout": {
+          "enum": [
+            "rows",
+            "compact"
+          ]
+        }
+      }
+    }
+  },
+  "$defs": {
+    "overrideValue": {
+      "oneOf": [
+        {
+          "type": "string",
+          "maxLength": 200
+        },
+        {
+          "type": "number"
+        },
+        {
+          "type": "boolean"
+        },
+        {
+          "type": "null"
+        },
+        {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/overrideValue"
+          }
+        }
+      ]
+    }
+  }
+}

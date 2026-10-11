@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "id": "square-64x64-p3",
+  "label": "Square 64x64 P3",
+  "description": "One square 64x64 P3 panel for stacked layouts with teams, score, and status arranged vertically.",
+  "targetClass": "linux-sbc-hub75@1",
+  "logical": {
+    "width": 64,
+    "height": 64
+  },
+  "physical": {
+    "widthMm": 192,
+    "heightMm": 192,
+    "pixelPitchMm": 3
+  },
+  "orientation": "square",
+  "capabilities": {
+    "color": "rgb888",
+    "maxAnimationFps": 30,
+    "brightnessRange": [10, 100],
+    "memoryBudgetMb": 150,
+    "supportedElements": [
+      "text",
+      "box",
+      "line",
+      "sprite",
+      "basesDiamond",
+      "outsDots",
+      "countText",
+      "scrollText",
+      "clock"
+    ]
+  },
+  "validationRules": [
+    "resolution-match",
+    "font-min-size",
+    "asset-format",
+    "memory-estimate",
+    "effect-support",
+    "network-assumption",
+    "config-complete"
+  ]
+}

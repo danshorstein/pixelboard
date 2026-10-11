@@ -1,0 +1,93 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scoreboard.local/schemas/verification-report.schema.json",
+  "title": "Scoreboard Renderer Verification Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "status",
+    "frames",
+    "maxRenderMs",
+    "frameBudgetMs",
+    "pixelTolerance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1.0"
+    },
+    "status": {
+      "enum": [
+        "pass",
+        "fail"
+      ]
+    },
+    "frames": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "name",
+          "expectedSha256",
+          "actualSha256",
+          "match",
+          "renderMs"
+        ],
+        "properties": {
+          "name": {
+            "type": "string",
+            "minLength": 1
+          },
+          "expectedSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "actualSha256": {
+            "type": "string",
+            "pattern": "^[a-f0-9]{64}$"
+          },
+          "match": {
+            "type": "boolean"
+          },
+          "renderMs": {
+            "type": "number",
+            "minimum": 0
+          }
+        }
+      }
+    },
+    "arcadeFrames": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/frames/items"
+      }
+    },
+    "maxRenderMs": {
+      "type": "number",
+      "minimum": 0
+    },
+    "frameBudgetMs": {
+      "type": "number",
+      "exclusiveMinimum": 0
+    },
+    "pixelTolerance": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "nflFrames": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/frames/items"
+      }
+    },
+    "nflLogoFrames": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/frames/items"
+      }
+    }
+  }
+}

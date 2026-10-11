@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "id": "ticker-128x32-p4",
+  "label": "Wide Ticker 128x32 P4",
+  "description": "Default reference profile using two chained 64x32 P4 panels, sized for a bedroom wall and readable across a room.",
+  "targetClass": "linux-sbc-hub75@1",
+  "logical": {
+    "width": 128,
+    "height": 32
+  },
+  "physical": {
+    "widthMm": 510,
+    "heightMm": 127,
+    "pixelPitchMm": 4
+  },
+  "orientation": "landscape",
+  "capabilities": {
+    "color": "rgb888",
+    "maxAnimationFps": 30,
+    "brightnessRange": [10, 100],
+    "memoryBudgetMb": 150,
+    "supportedElements": [
+      "text",
+      "box",
+      "line",
+      "sprite",
+      "basesDiamond",
+      "outsDots",
+      "countText",
+      "scrollText",
+      "clock"
+    ]
+  },
+  "validationRules": [
+    "resolution-match",
+    "font-min-size",
+    "asset-format",
+    "memory-estimate",
+    "effect-support",
+    "network-assumption",
+    "config-complete"
+  ]
+}

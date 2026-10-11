@@ -1,0 +1,50 @@
+{
+  "schemaVersion": "1.0",
+  "output": "hub75",
+  "brightness": 35,
+  "dimBrightness": 10,
+  "frameRate": 20,
+  "status": {
+    "host": "0.0.0.0",
+    "port": 8123
+  },
+  "buttons": {
+    "enabled": false,
+    "nextPin": 25,
+    "holdPin": 19,
+    "bounceSec": 0.08
+  },
+  "bluetoothRemote": {
+    "enabled": true,
+    "deviceName": "8BitDo Zero 2 gamepad Keyboard",
+    "nextKeyCode": 34,
+    "holdKeyCode": 36,
+    "keyCodes": {
+      "up": 46,
+      "down": 32,
+      "left": 18,
+      "right": 33,
+      "a": 34,
+      "b": 36,
+      "x": 35,
+      "y": 23,
+      "l": 37,
+      "r": 50,
+      "select": 49,
+      "start": 24
+    }
+  },
+  "panel": {
+    "rows": 32,
+    "cols": 64,
+    "chainLength": 2,
+    "parallel": 1,
+    "hardwareMapping": "adafruit-hat",
+    "gpioSlowdown": 2,
+    "multiplexing": 0,
+    "panelType": null,
+    "pwmBits": 7,
+    "pwmLsbNanoseconds": 100,
+    "limitRefreshRateHz": 150
+  }
+}

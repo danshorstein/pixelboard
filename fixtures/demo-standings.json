@@ -1,0 +1,22 @@
+[
+  {
+    "schemaVersion": "1.0",
+    "standingsId": "mlb-2026-07-15-nl-east",
+    "date": "2026-07-15",
+    "league": "NL",
+    "division": { "id": 204, "name": "NL East" },
+    "teams": [
+      { "rank": 1, "team": { "id": 143, "abbr": "PHI", "name": "Phillies" }, "wins": 58, "losses": 38, "gamesBack": 0 },
+      { "rank": 2, "team": { "id": 121, "abbr": "NYM", "name": "Mets" }, "wins": 52, "losses": 44, "gamesBack": 6 },
+      { "rank": 3, "team": { "id": 120, "abbr": "WSH", "name": "Nationals" }, "wins": 48, "losses": 48, "gamesBack": 10 },
+      { "rank": 4, "team": { "id": 144, "abbr": "ATL", "name": "Braves" }, "wins": 45, "losses": 50, "gamesBack": 12.5 },
+      { "rank": 5, "team": { "id": 146, "abbr": "MIA", "name": "Marlins" }, "wins": 39, "losses": 56, "gamesBack": 18.5 }
+    ],
+    "source": {
+      "provider": "bundled-fixtures",
+      "fetchedUtc": "2026-07-15T21:00:00Z",
+      "mode": "demo",
+      "freshness": "fresh"
+    }
+  }
+]

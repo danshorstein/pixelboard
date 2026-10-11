@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scoreboard.local/schemas/standings-state.schema.json",
+  "title": "Normalized MLB Standings State",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "standingsId",
+    "date",
+    "league",
+    "division",
+    "teams",
+    "source"
+  ],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "standingsId": { "type": "string", "minLength": 1, "maxLength": 160 },
+    "date": { "type": "string", "format": "date" },
+    "league": { "enum": ["AL", "NL"] },
+    "division": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "name"],
+      "properties": {
+        "id": { "type": ["integer", "string"] },
+        "name": { "type": "string", "minLength": 1, "maxLength": 100 }
+      }
+    },
+    "teams": {
+      "type": "array",
+      "minItems": 2,
+      "maxItems": 10,
+      "items": { "$ref": "#/$defs/standingTeam" }
+    },
+    "source": { "$ref": "#/$defs/source" }
+  },
+  "$defs": {
+    "standingTeam": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["rank", "team", "wins", "losses"],
+      "properties": {
+        "rank": { "type": "integer", "minimum": 1, "maximum": 30 },
+        "team": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["id", "abbr", "name"],
+          "properties": {
+            "id": { "type": ["integer", "string"] },
+            "abbr": { "type": "string", "pattern": "^[A-Z0-9]{2,5}$" },
+            "name": { "type": "string", "minLength": 1, "maxLength": 100 }
+          }
+        },
+        "wins": { "type": "integer", "minimum": 0, "maximum": 200 },
+        "losses": { "type": "integer", "minimum": 0, "maximum": 200 },
+        "gamesBack": {
+          "oneOf": [
+            { "type": "number", "minimum": 0, "maximum": 200 },
+            { "type": "null" }
+          ]
+        }
+      }
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "fetchedUtc", "mode", "freshness"],
+      "properties": {
+        "provider": { "type": "string", "minLength": 1, "maxLength": 100 },
+        "fetchedUtc": { "type": "string", "format": "date-time" },
+        "mode": { "enum": ["live", "demo", "replay"] },
+        "freshness": { "enum": ["fresh", "stale", "failed"] }
+      }
+    }
+  }
+}

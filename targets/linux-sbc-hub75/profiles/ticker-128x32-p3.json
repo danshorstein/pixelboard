@@ -1,0 +1,43 @@
+{
+  "schemaVersion": "1.0",
+  "id": "ticker-128x32-p3",
+  "label": "Wide Ticker 128x32 P3",
+  "description": "Two chained 64x32 P3 panels for a sharp desk or shelf display viewed up close.",
+  "targetClass": "linux-sbc-hub75@1",
+  "logical": {
+    "width": 128,
+    "height": 32
+  },
+  "physical": {
+    "widthMm": 382,
+    "heightMm": 96,
+    "pixelPitchMm": 3
+  },
+  "orientation": "landscape",
+  "capabilities": {
+    "color": "rgb888",
+    "maxAnimationFps": 30,
+    "brightnessRange": [10, 100],
+    "memoryBudgetMb": 150,
+    "supportedElements": [
+      "text",
+      "box",
+      "line",
+      "sprite",
+      "basesDiamond",
+      "outsDots",
+      "countText",
+      "scrollText",
+      "clock"
+    ]
+  },
+  "validationRules": [
+    "resolution-match",
+    "font-min-size",
+    "asset-format",
+    "memory-estimate",
+    "effect-support",
+    "network-assumption",
+    "config-complete"
+  ]
+}

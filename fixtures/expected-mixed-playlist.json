@@ -1,0 +1,23 @@
+[
+  { "kind": "game", "gameId": "mlb-2026-07-15-MIA-WSH-1", "scene": "live", "dwellSec": 30, "favorite": true },
+  { "kind": "game", "gameId": "mlb-2026-07-15-PIT-PHI-1", "scene": "pregame", "dwellSec": 30, "favorite": true },
+  { "kind": "game", "gameId": "mlb-2026-07-15-LAD-SD-1", "scene": "live", "dwellSec": 12, "favorite": false },
+  { "kind": "game", "gameId": "mlb-2026-07-15-CLE-DET-missing-optionals", "scene": "live", "dwellSec": 12, "favorite": false },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "143", "scene": "standings", "dwellSec": 6, "favorite": true },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "121", "scene": "standings", "dwellSec": 4, "favorite": false },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "120", "scene": "standings", "dwellSec": 6, "favorite": true },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "144", "scene": "standings", "dwellSec": 4, "favorite": false },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "146", "scene": "standings", "dwellSec": 4, "favorite": false },
+  { "kind": "game", "gameId": "mlb-2026-07-15-BOS-NYY-2", "scene": "live", "dwellSec": 12, "favorite": false },
+  { "kind": "game", "gameId": "mlb-2026-07-15-BOS-NYY-1", "scene": "final", "dwellSec": 12, "favorite": false },
+  { "kind": "game", "gameId": "mlb-2026-07-15-KC-MIN-unknown", "scene": "statusOnly", "dwellSec": 12, "favorite": false },
+  { "kind": "game", "gameId": "mlb-2026-07-15-TOR-BAL-suspended", "scene": "statusOnly", "dwellSec": 12, "favorite": false },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "143", "scene": "standings", "dwellSec": 6, "favorite": true },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "121", "scene": "standings", "dwellSec": 4, "favorite": false },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "120", "scene": "standings", "dwellSec": 6, "favorite": true },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "144", "scene": "standings", "dwellSec": 4, "favorite": false },
+  { "kind": "standings", "standingsId": "mlb-2026-07-15-nl-east", "teamId": "146", "scene": "standings", "dwellSec": 4, "favorite": false },
+  { "kind": "game", "gameId": "mlb-2026-07-15-ATH-TEX-canceled", "scene": "statusOnly", "dwellSec": 12, "favorite": false },
+  { "kind": "game", "gameId": "mlb-2026-07-15-CHC-STL-rain-delay", "scene": "statusOnly", "dwellSec": 12, "favorite": false },
+  { "kind": "game", "gameId": "mlb-2026-07-15-SF-COL-postponed", "scene": "statusOnly", "dwellSec": 12, "favorite": false }
+]

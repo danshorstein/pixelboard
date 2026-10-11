@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scoreboard.local/schemas/readiness-report.schema.json",
+  "title": "Scoreboard Device Readiness Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "status", "projectId", "projectVersion", "profile", "validation", "verification", "build", "installation", "knownLimitations"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "status": { "enum": ["ready", "blocked"] },
+    "projectId": { "type": "string" },
+    "projectVersion": { "type": "integer", "minimum": 1 },
+    "profile": { "$ref": "https://scoreboard.local/schemas/device-profile.schema.json" },
+    "validation": { "$ref": "https://scoreboard.local/schemas/validation-report.schema.json" },
+    "verification": { "$ref": "https://scoreboard.local/schemas/verification-report.schema.json" },
+    "build": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["id", "adapterVersion", "runtimeVersion", "inputDigest", "artifactFilename"],
+      "properties": {
+        "id": { "type": "string" },
+        "adapterVersion": { "type": "string" },
+        "runtimeVersion": { "type": "string" },
+        "inputDigest": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+        "artifactFilename": { "type": "string", "pattern": "^[A-Za-z0-9._-]+\\.tar\\.gz$" }
+      }
+    },
+    "installation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["panelCount", "recommendedPower", "nextButton", "holdButton", "instructions", "assemblyGuide", "billOfMaterials", "acceptanceChecklist"],
+      "properties": {
+        "panelCount": { "type": "integer", "minimum": 1 },
+        "recommendedPower": { "type": "string" },
+        "nextButton": { "type": "string" },
+        "holdButton": { "type": "string" },
+        "instructions": { "type": "string" },
+        "assemblyGuide": { "type": "string" },
+        "billOfMaterials": { "type": "string" },
+        "acceptanceChecklist": { "type": "string" }
+      }
+    },
+    "knownLimitations": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+  }
+}

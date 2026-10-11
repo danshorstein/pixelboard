@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://scoreboard.local/schemas/validation-report.schema.json",
+  "title": "Scoreboard Target Validation Report",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "projectId", "projectVersion", "profileId", "targetClass", "generatedUtc", "status", "summary", "findings"],
+  "properties": {
+    "schemaVersion": { "const": "1.0" },
+    "projectId": { "type": "string", "minLength": 1 },
+    "projectVersion": { "type": "integer", "minimum": 1 },
+    "profileId": { "type": "string", "minLength": 1 },
+    "targetClass": { "type": "string", "minLength": 1 },
+    "generatedUtc": { "type": "string", "format": "date-time" },
+    "status": { "enum": ["valid", "warnings", "blocked"] },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["pass", "warning", "blocking", "unacknowledgedWarnings"],
+      "properties": {
+        "pass": { "type": "integer", "minimum": 0 },
+        "warning": { "type": "integer", "minimum": 0 },
+        "blocking": { "type": "integer", "minimum": 0 },
+        "unacknowledgedWarnings": { "type": "integer", "minimum": 0 }
+      }
+    },
+    "findings": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["rule", "severity", "title", "evidence", "remediation", "acknowledged"],
+        "properties": {
+          "rule": { "type": "string", "minLength": 1 },
+          "severity": { "enum": ["pass", "warning", "blocking"] },
+          "title": { "type": "string", "minLength": 1 },
+          "evidence": { "type": "string", "minLength": 1 },
+          "remediation": { "type": ["string", "null"] },
+          "acknowledged": { "type": "boolean" }
+        }
+      }
+    }
+  }
+}
