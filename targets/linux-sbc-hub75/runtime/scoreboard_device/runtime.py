@@ -24,6 +24,9 @@ from scoreboard_device.history import HistoryController, final_cards
 from scoreboard_device.scoring_alerts import ScoringAlerts, fetch_scoring_events
 from shared_py.nfl_feed import NflFeed, validate_settings, selected_games
 from shared_py.nfl_frame import nfl_frame
+from shared_py.sports import sports_settings, validate_sports, filter_games, TEAM_CATALOG
+from shared_py.league_feed import LeagueFeed
+from shared_py.sports_frame import sports_frame
 from shared_py.freshness import classify_freshness
 from shared_py.bdf import parse_bdf
 from shared_py.fireworks_frame import create_fireworks_frame
@@ -202,6 +205,10 @@ class DeviceRuntime:
         self.nfl_feed = NflFeed(self.root / 'state/nfl-cache.json')
         self.nfl_snapshot = None
         self.next_nfl_fetch = 0.0
+        self.league_feeds = {k: LeagueFeed(k, self.root / f'state/{k}-cache.json') for k in ('nba', 'nhl')}
+        self.history_league_feeds = {k: LeagueFeed(k, self.root / f'state/history-{k}-cache.json') for k in ('nba', 'nhl')}
+        self.league_snapshots = {}
+        self.next_league_fetch = {'nba': 0.0, 'nhl': 0.0}
         self._consumed_until_release = set()
         self._wake_deadline = 0.0
         self._reveal_deferred_for_quiet_hours = False
@@ -477,6 +484,8 @@ class DeviceRuntime:
             return self._web_get_history()
 
     async def _fetch_history(self):
+        if 'sports' in self.project:
+            return await self._fetch_selected_history()
         with self.lock:
             generation, requested_date = self.history.generation, self.history.date
             if not requested_date: return
@@ -495,6 +504,39 @@ class DeviceRuntime:
         cards = final_cards(mlb,nfl.get('games',[]),requested_date,str(self.timezone))
         with self.lock:
             self.history.apply(generation,cards,errors,self.project['rotation']['otherDwellSec'],self._web_get_config()['nfl']['dwellSec'])
+
+    async def _fetch_selected_history(self):
+        with self.lock:
+            generation, requested = self.history.generation, self.history.date
+            policy = sports_settings(self.project)
+            if not requested: return
+        adapter = MlbStatsApiAdapter(timezone_name=str(self.timezone))
+        tasks, leagues = [], []
+        for league in ('mlb','nfl','nba','nhl'):
+            if not policy[league]['enabled']: continue
+            leagues.append(league)
+            if league=='mlb': tasks.append(adapter.get_final_games(requested))
+            else:
+                feed = self.history_nfl_feed if league=='nfl' else self.history_league_feeds[league]
+                tasks.append(asyncio.to_thread(feed.fetch, requested))
+        try: values = await asyncio.gather(*tasks, return_exceptions=True)
+        finally: await adapter.close()
+        cards, errors = [], []
+        for league, value in zip(leagues, values):
+            if isinstance(value, BaseException): errors.append(league.upper()+' DATA OFFLINE'); continue
+            if league=='mlb':
+                cards += final_cards(filter_games(policy, 'mlb', value), [], requested, str(self.timezone))
+                continue
+            source = value.get('source', value)
+            if source.get('freshness') not in ('fresh','partial'): errors.append(league.upper()+' DATA OFFLINE')
+            for g in filter_games(policy, league, value.get('games', [])):
+                try:
+                    if not g['completed'] or datetime.fromisoformat(g['date'].replace('Z','+00:00')).astimezone(self.timezone).date().isoformat()!=requested: continue
+                    if any(g[side].get('score') is None or int(g[side]['score'])<0 for side in ('home','away')): continue
+                    cards.append(dict(sport=league.upper(), id=league+':'+g['id'], away=g['away'], home=g['home']))
+                except (ValueError, TypeError, KeyError): continue
+        with self.lock:
+            self.history.apply(generation, cards, errors, self.project['rotation']['otherDwellSec'], 8)
 
     def _visible_scoring_game(self):
         now = datetime.now(self.timezone)
@@ -569,6 +611,10 @@ class DeviceRuntime:
         ]
 
     def _team_playlist(self, items, now):
+        if not sports_settings(self.project)['team']['enabled']:
+            self._team_day = now.astimezone(self.timezone).date()
+            self._team_practice_deadline = None
+            return [i for i in items if i.get('teamId') != 'sample-team']
         snapshot = self.team.snapshot(now)
         cards = [{'kind': 'team', 'scene': 'team', 'groupId': 'summary', 'dwellSec': 12}]
         cards += [{'kind': 'team', 'scene': 'team', 'groupId': group['id'], 'dwellSec': 10}
@@ -604,7 +650,8 @@ class DeviceRuntime:
 
     def _nfl_playlist(self, items):
         settings = self._web_get_config()['nfl']
-        games = selected_games(self._nfl_games(), settings)
+        if 'nfl' in self.project.get('sports', {}): settings['favoritesOnly'] = False
+        games = filter_games(sports_settings(self.project), 'nfl', selected_games(self._nfl_games(), settings))
         nfl = [{'kind':'nfl', 'scene':'nfl', 'gameId':g['id'], 'completed':g['completed'], 'dwellSec':settings['dwellSec']} for g in games]
         return [*nfl, *items] if settings['liveFirst'] else [*items, *nfl]
 
@@ -613,19 +660,78 @@ class DeviceRuntime:
             self.next_nfl_fetch = monotonic() + 30
             return
         requested_date = datetime.now(self.timezone).date().isoformat()
+        generation = self.project.get('meta', {}).get('version')
         value = await asyncio.to_thread(self.nfl_feed.fetch, requested_date)
         with self.lock:
+            if (not sports_settings(self.project)['nfl']['enabled'] or generation != self.project.get('meta', {}).get('version') or requested_date != datetime.now(self.timezone).date().isoformat()):
+                self.next_nfl_fetch = 0
+                return
             self.nfl_snapshot = value
             self.next_nfl_fetch = monotonic() + 30
             self._refresh_playlist(datetime.now(self.timezone))
 
+    def _league_games(self, league):
+        value = self.league_snapshots.get(league, {})
+        return value.get('games', []) if value.get('date') == datetime.now(self.timezone).date().isoformat() else []
+
+    def _league_freshness(self, league):
+        source = self.league_snapshots.get(league, {}).get('source', {})
+        value = source.get('freshness', 'loading')
+        if value in ('fresh', 'partial') and source.get('fetchedUtc'):
+            try:
+                if (datetime.now(timezone.utc)-datetime.fromisoformat(source['fetchedUtc'])).total_seconds() > 90: return 'stale'
+            except (ValueError, TypeError): return 'stale'
+        return value
+
+    async def _fetch_league(self, league):
+        self.next_league_fetch[league] = monotonic() + 30
+        if not sports_settings(self.project)[league]['enabled']: return
+        requested = datetime.now(self.timezone).date().isoformat()
+        generation = self.project.get('meta', {}).get('version')
+        try:
+            value = await asyncio.to_thread(self.league_feeds[league].fetch, requested)
+        except Exception:
+            LOGGER.exception('%s feed task failed', league)
+            return
+        with self.lock:
+            if (not sports_settings(self.project)[league]['enabled'] or generation != self.project.get('meta', {}).get('version')
+                    or requested != datetime.now(self.timezone).date().isoformat()):
+                self.next_league_fetch[league] = 0
+                return
+            self.league_snapshots[league] = value
+            self.next_league_fetch[league] = monotonic() + max(30, value.get('source', {}).get('refreshSec', 30))
+            self._refresh_playlist(datetime.now(self.timezone))
+
     def _refresh_playlist(self, now):
+        policy = sports_settings(self.project)
         self.standings = self._with_local_standings(self.standings)
-        items = build_playlist(self.games, self._rules(quiet_enabled=False),
-                               {'localTime': now.strftime('%H:%M')}, standings=self.standings, content_mode='mixed')
-        self.transport.update(self._nfl_playlist(self._team_playlist(items, now)), self.games)
+        standings = []
+        for snapshot in self.standings:
+            local = (snapshot.get('source') or {}).get('provider') == 'local-manual'
+            if local:
+                if policy['team']['enabled']: standings.append(snapshot)
+            elif policy['mlb']['enabled']:
+                value = deepcopy(snapshot)
+                if policy['mlb']['teams'] is not None:
+                    value['teams'] = [row for row in value.get('teams', []) if row.get('team', {}).get('abbr') in policy['mlb']['teams']]
+                standings.append(value)
+        games = filter_games(policy, 'mlb', self.games)
+        items = build_playlist(games, self._rules(quiet_enabled=False),
+            {'localTime': now.strftime('%H:%M')}, standings=standings, content_mode='mixed')
+        items = self._nfl_playlist(self._team_playlist(items, now))
+        extras = []
+        for league in ('nba', 'nhl'):
+            extras += [dict(kind=league, scene=league, gameId=g['id'], completed=g['completed'], dwellSec=8)
+                       for g in filter_games(policy, league, self._league_games(league))]
+        extras.sort(key=lambda i: next((g['state'] != 'in' for g in self._league_games(i['kind']) if g['id']==i['gameId']), True))
+        items = extras + items
+        if any(i.get('kind') != 'idle' for i in items): items = [i for i in items if i.get('kind') != 'idle']
+        self.transport.update(items, games)
 
     async def _fetch_team(self):
+        if not sports_settings(self.project)['team']['enabled']:
+            self.next_team_fetch = monotonic() + 30
+            return
         refreshed = await asyncio.to_thread(self.team.refresh)
         with self.lock:
             self.next_team_fetch = monotonic() + (3600 if refreshed else 60)
@@ -681,6 +787,9 @@ class DeviceRuntime:
             return {'ok': True}
 
     async def _fetch(self) -> None:
+        if not sports_settings(self.project)['mlb']['enabled']:
+            self.next_fetch = monotonic() + 30
+            return
         mode = self.project["data"]["mode"]
         try:
             if mode == "demo":
@@ -755,7 +864,7 @@ class DeviceRuntime:
                 self.last_error = standings_error
                 self.refresh_sec = refresh
                 self.next_fetch = monotonic() + refresh
-                self.transport.update(self._nfl_playlist(self._team_playlist(playlist, datetime.now(self.timezone))), games)
+                self._refresh_playlist(datetime.now(self.timezone))
             LOGGER.info(
                 "data refresh games=%d standings=%d game_cadence=%ds standings_due=%s",
                 len(games),
@@ -770,6 +879,9 @@ class DeviceRuntime:
             LOGGER.exception("data refresh failed")
 
     async def _fetch_recap_window(self) -> None:
+        if not sports_settings(self.project)['mlb']['enabled']:
+            self.next_recap_fetch = monotonic() + 30
+            return
         """Refreshes the favorites' recent-result / next-game schedule window
         on its own slow cadence, independent of the baseball-day game cache
         in _fetch. The result is cached under state/ so it survives restarts
@@ -822,7 +934,10 @@ class DeviceRuntime:
         """One favorite's morning recap card, cycling across favorites on the
         recap dwell. Returns None if there is nothing cached to show yet."""
         window = self._recap_window
-        favorites = [str(value) for value in self.project.get("favorites", [])]
+        policy = sports_settings(self.project)['mlb']
+        if not policy['enabled']: return None
+        favorites = [str(value) for value in self.project.get("favorites", [])
+                     if policy['teams'] is None or str(value) in policy['teams']]
         if not window or not favorites:
             return None
         if monotonic() - self._recap_started >= self._recap_dwell_sec:
@@ -998,6 +1113,27 @@ class DeviceRuntime:
             freshness = self._freshness()
             elapsed_ms = (monotonic() - self.transport.item_started) * 1000
             transport_held = self.transport.held
+        if not self.controller_settings.active and (item is None or item.get('kind') == 'idle') and not sports_settings(self.project)['mlb']['enabled']:
+            enabled = [k.upper() for k,v in sports_settings(self.project).items() if v['enabled']]
+            active_leagues = [k for k in ('nfl','nba','nhl') if sports_settings(self.project)[k]['enabled']]
+            freshness = [self._nfl_freshness() if k=='nfl' else self._league_freshness(k) for k in active_leagues]
+            message = ('LOADING SCORES' if any(v=='loading' for v in freshness) else
+                       'DATA OFFLINE' if freshness and all(v in ('failed','stale') for v in freshness) else
+                       'NO SELECTED GAMES') if enabled else 'NO SPORTS SELECTED'
+            frame = create_reveal_text_frame(128,32,[message,
+                ' / '.join(enabled) if enabled else 'SELECT MENU: SPORTS'],self.fonts['4x6'])
+            self._show_frame(frame)
+            return frame
+        if item and item.get('kind') in ('nba', 'nhl') and not self.controller_settings.active:
+            league = item['kind']
+            g = next((g for g in self._league_games(league) if g['id'] == item['gameId']), None)
+            started = perf_counter()
+            frame = sports_frame(g, self.fonts, self._league_freshness(league) not in ('fresh', 'partial'), transport_held, str(self.timezone))
+            elapsed = (perf_counter()-started)*1000
+            self._show_frame(frame)
+            with self.lock:
+                self.render_count += 1; self.render_total_ms += elapsed; self.render_max_ms = max(self.render_max_ms, elapsed)
+            return frame
         if item and item.get('kind') == 'nfl' and not self.controller_settings.active:
             nfl_game = next((g for g in self._nfl_games() if g['id'] == item['gameId']), None)
             stale = self._nfl_freshness() != 'fresh'
@@ -1147,12 +1283,12 @@ class DeviceRuntime:
                     "record": f"{row.get('wins')}-{row.get('losses')}",
                 }
 
-            if current and current.get('kind') == 'nfl' and not self.arcade.active and not self.controller_settings.active:
-                g = next((v for v in self._nfl_games() if v['id'] == current['gameId']), None)
+            if current and current.get('kind') in ('nfl', 'nba', 'nhl') and not self.arcade.active and not self.controller_settings.active:
+                g = next((v for v in (self._nfl_games() if current['kind']=='nfl' else self._league_games(current['kind'])) if v['id'] == current['gameId']), None)
                 if g:
                     try: start = datetime.fromisoformat(g['date'].replace('Z','+00:00')).astimezone(self.timezone) if g.get('date') else None
                     except (TypeError,ValueError): start = None
-                    display_info['game'] = dict(gameId=g['id'],status='final' if g['completed'] else 'in_progress' if g['state']=='in' else 'scheduled', statusDetail=g['status'],isFinal=g['completed'],away=g['away'],home=g['home'],venue=g['venue'],gameDate=start.strftime('%a, %b %-d') if start else '',startTime=start.strftime('%-I:%M %p') if start else '')
+                    display_info['game'] = dict(gameId=g['id'],status='final' if g['completed'] else 'in_progress' if g['state']=='in' else 'scheduled', statusDetail=g['status'],isFinal=g['completed'],away=g['away'],home=g['home'],venue=g.get('venue', ''),gameDate=start.strftime('%a, %b %-d') if start else '',startTime=start.strftime('%-I:%M %p') if start else '')
                     display_info.pop('standings',None)
 
             if not self._reveal_active and not self._reveal_waiting and not self.controller_settings.active and self._fireworks_deadline is None:
@@ -1171,6 +1307,7 @@ class DeviceRuntime:
                 "profileId": self.profile["id"],
                 "output": self.output.kind,
                 "currentGameId": current.get("gameId") if current else None,
+                "gameCount": sum(i.get("kind") in ("game","nfl","nba","nhl") for i in self.transport.items),
                 "freshness": self._freshness(),
                 "fetchedUtc": self.fetched_utc,
                 "lastError": self.last_error,
@@ -1184,6 +1321,9 @@ class DeviceRuntime:
                     "progress": self._fireworks_progress,
                 },
                 "controllerSettings": {"active": self.controller_settings.active, "preview": self.controller_settings.preview, "page": self.controller_settings.page},
+                "sports": sports_settings(self.project),
+                "leagueFeeds": {k: dict(enabled=sports_settings(self.project)[k]['enabled'], games=len(self._league_games(k)),
+                    freshness=self._league_freshness(k), **{n:v for n,v in self.league_snapshots.get(k,{}).get('source',{}).items() if n!='freshness'}) for k in ('nba','nhl')},
                 "nfl": {"enabled":self._web_get_config()['nfl']['enabled'], "games":len(self._nfl_games()), "source":"ESPN", "freshness":self._nfl_freshness(), "fetchedUtc":(self.nfl_snapshot or {}).get('fetchedUtc'), "error":(self.nfl_snapshot or {}).get('error')},
                 "temporaryWake": {"active": monotonic() < self._wake_deadline, "remainingSec": max(0, round(self._wake_deadline - monotonic()))},
                 "reveal": {
@@ -1345,7 +1485,9 @@ class DeviceRuntime:
                     "dim": int(br.get("dim", self.config.get("dimBrightness", 10))),
                 },
                 "favorites": favs,
-                "nfl": validate_settings(self.project.get("nfl", {})),
+                "nfl": {**validate_settings(self.project.get("nfl", {})), 'enabled': sports_settings(self.project)['nfl']['enabled']},
+                "sports": sports_settings(self.project),
+                "sportTeams": TEAM_CATALOG,
                 "wakeDurationSec": int(self.project.get('controllerPreferences', {}).get('wakeDurationSec', 60)),
                 "layoutPreset": self.project.get("designOverrides", {}).get("layoutPreset", "classic"),
                 "allTeams": [
@@ -1359,7 +1501,7 @@ class DeviceRuntime:
     def _web_update_config(self, payload: dict[str, Any]) -> dict[str, Any]:
         if not isinstance(payload, dict):
             raise ValueError("Invalid configuration payload; expected JSON object")
-        allowed = {"expectedVersion", "quietHours", "brightness", "favorites", "layoutPreset", "wakeDurationSec", "nfl"}
+        allowed = {"expectedVersion", "quietHours", "brightness", "favorites", "layoutPreset", "wakeDurationSec", "nfl", "sports"}
         unknown = set(payload) - allowed
         if unknown:
             raise ValueError(f"Unsupported configuration fields: {', '.join(sorted(unknown))}")
@@ -1368,6 +1510,7 @@ class DeviceRuntime:
             raise ValueError("expectedVersion must be the positive version returned by GET /api/config")
 
         nfl_settings = validate_settings(payload['nfl']) if 'nfl' in payload else None
+        sport_changes = validate_sports(payload['sports']) if 'sports' in payload else None
         wake_seconds = payload.get('wakeDurationSec')
         if wake_seconds is not None and (type(wake_seconds) is not int or not 10 <= wake_seconds <= 600):
             raise ValueError('Wake duration must be an integer between 10 and 600 seconds')
@@ -1443,7 +1586,18 @@ class DeviceRuntime:
                 candidate.setdefault('controllerPreferences', {})['wakeDurationSec'] = wake_seconds
 
             if nfl_settings is not None:
+                previous_nfl = validate_settings(candidate.get('nfl', {}))
                 candidate['nfl'] = nfl_settings
+                if 'sports' in candidate:
+                    policy = candidate['sports'].setdefault('nfl', {'enabled': False, 'teams': None})
+                    policy['enabled'] = nfl_settings['enabled']
+                    if (previous_nfl['favoritesOnly'] != nfl_settings['favoritesOnly'] or
+                            nfl_settings['favoritesOnly'] and previous_nfl['favorites'] != nfl_settings['favorites']):
+                        policy['teams'] = list(nfl_settings['favorites']) if nfl_settings['favoritesOnly'] else None
+            if sport_changes is not None:
+                candidate['sports'] = {**sports_settings(candidate), **sport_changes}
+                candidate['nfl'] = {**validate_settings(candidate.get('nfl', {})), 'enabled': candidate['sports']['nfl']['enabled']}
+                if 'nfl' in sport_changes: candidate['nfl']['favoritesOnly'] = False
 
             meta = candidate.setdefault("meta", {})
             meta["version"] = current_version + 1
@@ -1467,6 +1621,10 @@ class DeviceRuntime:
             self.output.set_brightness(dim_b if quiet else norm_b)
             self._refresh_playlist(now)
             if nfl_settings is not None: self.next_nfl_fetch = 0
+            if sport_changes is not None:
+                self.next_fetch = self.next_recap_fetch = self.next_nfl_fetch = 0
+                self.next_league_fetch = {'nba': 0, 'nhl': 0}
+                self.history.cancel()
 
         return {"ok": True, "config": self._web_get_config()}
 
@@ -1738,6 +1896,7 @@ class DeviceRuntime:
         recap_task: asyncio.Task[None] | None = asyncio.create_task(self._fetch_recap_window())
         team_task = asyncio.create_task(self._fetch_team())
         nfl_task = asyncio.create_task(self._fetch_nfl())
+        league_tasks = {k: asyncio.create_task(self._fetch_league(k)) for k in ('nba','nhl')}
         history_task = None
         scoring_task = None
         frame_interval = 1 / max(1, min(30, int(self.config.get("frameRate", 20))))
@@ -1763,6 +1922,13 @@ class DeviceRuntime:
                     nfl_task = None
                 if nfl_task is None and monotonic() >= self.next_nfl_fetch:
                     nfl_task = asyncio.create_task(self._fetch_nfl())
+                for league in ('nba', 'nhl'):
+                    task = league_tasks.get(league)
+                    if task and task.done():
+                        await task
+                        league_tasks[league] = None
+                    if league_tasks[league] is None and monotonic() >= self.next_league_fetch[league]:
+                        league_tasks[league] = asyncio.create_task(self._fetch_league(league))
                 if history_task and history_task.done():
                     await history_task
                     history_task = None
@@ -1780,7 +1946,7 @@ class DeviceRuntime:
                 self._render(datetime.now(self.timezone))
                 await asyncio.sleep(frame_interval)
         finally:
-            for pending in (fetch_task, recap_task, team_task, nfl_task, history_task, scoring_task):
+            for pending in (fetch_task, recap_task, team_task, nfl_task, history_task, scoring_task, *league_tasks.values()):
                 if pending:
                     pending.cancel()
                     await asyncio.gather(pending, return_exceptions=True)

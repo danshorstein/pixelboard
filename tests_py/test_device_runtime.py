@@ -76,6 +76,8 @@ class DeviceRuntimeTests(unittest.TestCase):
         config = json.loads((extracted / "config/runtime-config.json").read_text())
         config["buttons"] = {"enabled": False}
         config["bluetoothRemote"] = {"enabled": False}
+        # Each staged test runtime owns an ephemeral local HTTP port.
+        config["status"] = {"host": "127.0.0.1", "port": 0}
         (extracted / "config/runtime-config.json").write_text(json.dumps(config))
         pin_path = extracted / "state" / "broadcast-pin"
         pin_path.parent.mkdir(parents=True, exist_ok=True)

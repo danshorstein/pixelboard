@@ -31,7 +31,7 @@ export default defineConfig({
     allowedHosts: [".ngrok-free.app"],
     proxy: {
       "/api": {
-        target: "http://127.0.0.1:8124",
+        target: process.env.SCOREBOARD_API_TARGET || "http://127.0.0.1:8124",
         ws: true
       }
     },

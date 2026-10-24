@@ -8,7 +8,7 @@ def item_key(item: Mapping[str, Any]) -> str:
     kind = str(item.get("kind", "unknown"))
     if kind == "team":
         return f"team:{item.get('groupId', 'summary')}"
-    if kind in ("game", "nfl", "history"):
+    if kind in ("game", "nfl", "nba", "nhl", "history"):
         return f"{kind}:{item.get('gameId', '')}"
     if kind == "standings":
         return f"standings:{item.get('standingsId', '')}:{item.get('teamId', '')}"
@@ -35,7 +35,7 @@ class TransportController:
     @property
     def hold_label(self) -> str:
         current = self.current
-        return "WATCH LIVE" if current and current.get("kind") in ("game", "nfl") else "HOLD"
+        return "WATCH LIVE" if current and current.get("kind") in ("game", "nfl", "nba", "nhl") else "HOLD"
 
     def update(self, items: Sequence[Mapping[str, Any]], games: Sequence[Mapping[str, Any]]) -> None:
         now = self._clock()
@@ -61,7 +61,7 @@ class TransportController:
                 self.held = False
         current = self.current
         game = self.games.get(str(current.get("gameId"))) if current and current.get("kind") == "game" else None
-        if self.held and ((game and game.get("status") == "final") or (current and current.get("kind") == "nfl" and current.get("completed"))):
+        if self.held and ((game and game.get("status") == "final") or (current and current.get("kind") in ("nfl", "nba", "nhl") and current.get("completed"))):
             self.final_started = self.final_started or now
         else:
             self.final_started = None

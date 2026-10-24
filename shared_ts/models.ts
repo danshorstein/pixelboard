@@ -237,6 +237,7 @@ export interface ProjectDefinition {
     rolloverLocalTime: string;
   };
   quietHours: QuietHours;
+  sports?: Partial<Record<"mlb" | "nfl" | "nba" | "nhl" | "team", { enabled: boolean; teams: string[] | null }>>;
   nfl?: {
     enabled?: boolean;
     favorites?: string[];

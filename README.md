@@ -1,6 +1,6 @@
 # Pixelboard
 
-A live MLB and NFL scoreboard for your wall, built from a Raspberry Pi and two
+A live MLB, NFL, NBA and NHL scoreboard for your wall, built from a Raspberry Pi and two
 LED panels. When the games are over it turns into an arcade.
 
 ![Pixelboard on a shelf showing a live game, with its Bluetooth controller](docs/images/photos/board-front.jpg)
@@ -11,6 +11,12 @@ they score, goes dim at bedtime, and has seven games you play with a small
 Bluetooth controller. You run and set it up from any phone on your home Wi-Fi.
 There's no app to install and no cloud account.
 
+## Sports selection (0.9.0)
+
+Choose MLB, NFL, NBA and NHL independently, then select all teams or only the
+teams you follow. Use Select → Sports on the remote, or the dashboard’s
+**Sports & teams in rotation** controls. [Sports and recovery guide](docs/SPORTS.md).
+
 ## Why I built it
 
 We wanted an MLB scoreboard for our son for his birthday, but the ones I found
@@ -20,8 +26,8 @@ and got excited about what it was becoming. I’m sharing Pixelboard so other
 families can build their own and adapt it to their household.
 
 Pixelboard is designed for personal use in one household and needs an internet
-connection for live scores. It gets MLB data from MLB Stats API and NFL scores
-from ESPN’s scoreboard feed. These feeds depend on their providers’ availability
+connection for live scores. It gets MLB data from MLB Stats API and NFL, NBA and NHL scores
+from ESPN’s scoreboard feeds. These feeds depend on their providers’ availability
 and terms. You can also add an iCalendar subscription for a youth team. If a
 GameChanger team provides a feed, Pixelboard can show its games and practices
 alongside the other scores. Keep calendar subscription URLs private.
@@ -41,7 +47,9 @@ alongside the other scores. Keep calendar subscription URLs private.
 
 It also has:
 
-- **Past scores** for any date
+- **Basketball and hockey** scores, quarters/periods, overtime and shootouts
+- **Sport and team filters** to keep the rotation focused
+- **Past scores** for any date, following your saved sport/team choices
 - **A morning recap** of last night's results and today's games
 - **An optional team-schedule card** for a kids' or local team, read from any
   iCalendar link, with games, practices and a record you keep up to date
@@ -87,7 +95,7 @@ Wi-Fi. Anything that changes the board needs a six-digit household PIN.
 | | | |
 |---|---|---|
 | ![Live preview and controls](docs/images/dashboard/dashboard-controls.jpg) | ![Settings and quiet hours](docs/images/dashboard/dashboard-settings.jpg) | ![Announcements](docs/images/dashboard/dashboard-announce.jpg) |
-| A pixel-accurate **live preview** of the panel, plus Home, Next and Hold buttons | **Settings**: favorite teams, brightness, quiet hours, layout and NFL options | **Announcements** with presets and fireworks, plus a surprise you can arm to play on the next boot |
+| A pixel-accurate **live preview** of the panel, plus Home, Next and Hold buttons | **Settings**: sports, selected teams, favorites, brightness, quiet hours and layout | **Announcements** with presets and fireworks, plus a surprise you can arm to play on the next boot |
 
 The panel also covers past scores, the team schedule, arcade gems and high
 scores, and **one-tap software updates**. Updates are staged and checked
@@ -181,7 +189,7 @@ on the hardware above but hasn't been tried on much else yet. Issues and pull
 requests are welcome.
 
 The project is an unofficial fan project. It is not affiliated with MLB, the
-NFL, their teams, or data providers. Team names and logos are owned by their
+NFL, NBA, NHL, their teams, or data providers. Team names and logos are owned by their
 respective rights holders. Live feeds depend on external services, and their
 terms apply to your use of them.
 

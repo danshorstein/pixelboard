@@ -12,6 +12,7 @@ from shared_py.renderer import render_scene
 from shared_py.arcade import create_game, press_game, start_game, step_game, steer_snake, swing
 from shared_py.arcade_frame import arcade_frame
 from shared_py.nfl_frame import nfl_frame
+from shared_py.sports_frame import sports_frame
 
 
 def _json(path: Path) -> Any:
@@ -155,8 +156,16 @@ def verify_frames(root: Path, output_dir: Path) -> dict[str, Any]:
                     digest = hashlib.sha256(frame.data).hexdigest()
                     nfl_logo_results.append(dict(name=f"NFL-logo-{game['id']}-{layout}-{stale}-{tone}",
                         expectedSha256=expected, actualSha256=digest, match=digest==expected, renderMs=elapsed))
-    max_render_ms = max((result["renderMs"] for result in results + arcade_results + nfl_results + nfl_logo_results), default=0)
-    passed = all(result["match"] for result in results + arcade_results + nfl_results + nfl_logo_results) and max_render_ms <= 50
+    sports_results = []
+    for case in _json(root / 'fixtures/sports-frame-cases.json'):
+        started = perf_counter()
+        frame = sports_frame(case['game'], fonts, case['stale'], case['held'])
+        elapsed = round((perf_counter()-started)*1000,3)
+        digest = hashlib.sha256(frame.data).hexdigest()
+        sports_results.append(dict(name=case['name'], expectedSha256=case['sha256'], actualSha256=digest,
+                                   match=digest==case['sha256'], renderMs=elapsed))
+    max_render_ms = max((result["renderMs"] for result in results + arcade_results + nfl_results + nfl_logo_results + sports_results), default=0)
+    passed = all(result["match"] for result in results + arcade_results + nfl_results + nfl_logo_results + sports_results) and max_render_ms <= 50
     report = {
         "schemaVersion": "1.0",
         "status": "pass" if passed else "fail",
@@ -164,6 +173,7 @@ def verify_frames(root: Path, output_dir: Path) -> dict[str, Any]:
         "arcadeFrames": arcade_results,
         "nflFrames": nfl_results,
         "nflLogoFrames": nfl_logo_results,
+        "sportsFrames": sports_results,
         "maxRenderMs": max_render_ms,
         "frameBudgetMs": 50,
         "pixelTolerance": 0,

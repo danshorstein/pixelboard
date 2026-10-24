@@ -8,6 +8,8 @@ from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from time import monotonic
 from typing import Any, Callable
 
+from shared_py.sports_dashboard import SPORTS_HTML, SPORTS_JS
+
 LOGGER = logging.getLogger("scoreboard-status")
 MAX_JSON_BYTES = 64 * 1024
 
@@ -278,7 +280,7 @@ input[type="range"] {
 
 <div class="card">
   <div class="card-header"><div class="card-title">Past Scores</div></div>
-  <p class="subtitle">Final MLB and NFL scores for one date. Returns to live after 10 minutes.</p>
+  <p class="subtitle">Final scores from your enabled sports for one date. Returns to live after 10 minutes.</p>
   <label class="form-label" for="history-date">Game date</label>
   <input id="history-date" type="date" min="1900-01-01" class="form-input">
   <div class="controls-grid">
@@ -388,11 +390,12 @@ input[type="range"] {
       <p class="subtitle">During sleep hours, any controller button wakes the screen temporarily. Press Select once for the main menu and settings.</p>
     </div>
     <div class="form-group">
-      <label><input type="checkbox" id="nfl-enabled"> Include NFL scores</label>
+      <label hidden><input type="checkbox" id="nfl-enabled"> Include NFL scores</label>
       <label class="form-label" for="nfl-dwell">NFL seconds per game</label>
       <input id="nfl-dwell" type="number" min="3" max="60" value="8">
-      <p class="subtitle">Press Select once on the remote to pick NFL games, favorite teams, filters, and layout. NFL joins the MLB and Team rotation.</p>
+      <p class="subtitle">Sport toggles and team filters are below. The remote also offers Select → Sports; existing NFL game/layout controls remain available.</p>
     </div>
+    <!-- SPORTS SETTINGS -->
     <!-- Brightness -->
     <div class="form-group">
       <div class="form-label">
@@ -513,6 +516,7 @@ let selectedFavorites = new Set();
 let isUpdating = false;
 let configVersion = null;
 let nflSettings = {};
+// SPORTS SCRIPT
 
 function dashboardHouseholdPin() {
   const remembered = localStorage.getItem('scoreboard-broadcast-pin') || '';
@@ -758,7 +762,7 @@ async function refreshStatus() {
           if (secondaryText) secondaryText.textContent = '📅 ' + dateStr + (g.startTime ? ' · Started at ' + g.startTime : '') + venueStr;
         } else if (g.status === 'in_progress') {
           if (sceneTag) sceneTag.textContent = 'Game: LIVE';
-          if (primaryText) primaryText.textContent = (d.scene === 'nfl' ? '🏈 NFL: ' : '⚾ LIVE: ') + awayStr + ' @ ' + homeStr;
+          if (primaryText) primaryText.textContent = (['nfl','nba','nhl'].includes(d.scene) ? d.scene.toUpperCase() + ': ' : '⚾ LIVE: ') + awayStr + ' @ ' + homeStr;
           if (secondaryText) secondaryText.textContent = '📅 ' + dateStr + (g.statusDetail ? ' · ' + g.statusDetail : '') + venueStr;
         } else {
           if (sceneTag) sceneTag.textContent = 'Game: PREGAME';
@@ -814,6 +818,9 @@ async function loadConfig() {
     document.getElementById('nfl-enabled').checked = Boolean(nflSettings.enabled);
     document.getElementById('nfl-dwell').value = nflSettings.dwellSec || 8;
     document.getElementById('wake-duration').value = config.wakeDurationSec || 60;
+    sportsSettings = JSON.parse(JSON.stringify(config.sports || {}));
+    sportsCatalog = config.sportTeams || {};
+    renderSports();
     renderTeams();
   } catch (e) {
     console.error('Failed to load configuration:', e);
@@ -865,7 +872,8 @@ async function saveSettings(e) {
       normal: parseInt(document.getElementById('br-normal').value, 10),
       dim: parseInt(document.getElementById('br-dim').value, 10)
     },
-    nfl: {...nflSettings, enabled:document.getElementById('nfl-enabled').checked, dwellSec:parseInt(document.getElementById('nfl-dwell').value,10)},
+    nfl: {...nflSettings, enabled:sportsSettings.nfl ? sportsSettings.nfl.enabled : document.getElementById('nfl-enabled').checked, dwellSec:parseInt(document.getElementById('nfl-dwell').value,10)},
+    sports: sportsSettings,
     favorites: Array.from(selectedFavorites)
   };
 
@@ -1128,6 +1136,8 @@ setInterval(refreshReveal, 4000);
 </html>
 """
 
+
+DASHBOARD_PAGE = DASHBOARD_PAGE.replace("<!-- SPORTS SETTINGS -->", SPORTS_HTML).replace("// SPORTS SCRIPT", SPORTS_JS)
 
 class StatusServer:
     def __init__(

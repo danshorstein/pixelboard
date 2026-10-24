@@ -1,0 +1,2124 @@
+[
+  {
+    "name": "nba:demo:0-False-False",
+    "game": {
+      "id": "nba:demo:0",
+      "providerId": "demo:0",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "LIVE",
+      "period": 3,
+      "clock": "4:21"
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "764fb9f6c54767ac67e1f95b761a30dde842024eb5301483274b5de47d1502fa"
+  },
+  {
+    "name": "nba:demo:0-False-True",
+    "game": {
+      "id": "nba:demo:0",
+      "providerId": "demo:0",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "LIVE",
+      "period": 3,
+      "clock": "4:21"
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "276780d2956c505c6fde1bc180a59fd5fa488adbed783a9e24b130fab4bd5417"
+  },
+  {
+    "name": "nba:demo:0-True-False",
+    "game": {
+      "id": "nba:demo:0",
+      "providerId": "demo:0",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "LIVE",
+      "period": 3,
+      "clock": "4:21"
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "fd767f4e55964a018099ac1193a8ac165c68ca4c3943003ab347afda628a077f"
+  },
+  {
+    "name": "nba:demo:0-True-True",
+    "game": {
+      "id": "nba:demo:0",
+      "providerId": "demo:0",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "LIVE",
+      "period": 3,
+      "clock": "4:21"
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "4ab51775ef4b2afc2b3795035084e19a3cee00cec8635b1b944498893cc61fcf"
+  },
+  {
+    "name": "nba:demo:1-False-False",
+    "game": {
+      "id": "nba:demo:1",
+      "providerId": "demo:1",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": null
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "PREGAME",
+      "period": 0,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "9af9c0c386365f131ebd453a779266b98b441d79726854063c503b5d21a8509e"
+  },
+  {
+    "name": "nba:demo:1-False-True",
+    "game": {
+      "id": "nba:demo:1",
+      "providerId": "demo:1",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": null
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "PREGAME",
+      "period": 0,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "4db94326b2fa8f4a9c799a711914ac71924ea73a9f98a08b1552713f4666d6c9"
+  },
+  {
+    "name": "nba:demo:1-True-False",
+    "game": {
+      "id": "nba:demo:1",
+      "providerId": "demo:1",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": null
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "PREGAME",
+      "period": 0,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "ddb847ba0be2857c9f8778369822504051a73518a3112c953d931614084d723a"
+  },
+  {
+    "name": "nba:demo:1-True-True",
+    "game": {
+      "id": "nba:demo:1",
+      "providerId": "demo:1",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": null
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "PREGAME",
+      "period": 0,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "1b96227cfedcf020e4408dcb8b06b96b5912daf4f34a3ff7433de10ddab94f9d"
+  },
+  {
+    "name": "nba:demo:2-False-False",
+    "game": {
+      "id": "nba:demo:2",
+      "providerId": "demo:2",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL",
+      "period": 4,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "97d15b4e855bed828491c89c047d131925af7d4e8576ab4ff4c538e11baf23f1"
+  },
+  {
+    "name": "nba:demo:2-False-True",
+    "game": {
+      "id": "nba:demo:2",
+      "providerId": "demo:2",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL",
+      "period": 4,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "bb9a7a673069bdc26068516ec77f8be31204247a1c5ce078909b2713096d3af7"
+  },
+  {
+    "name": "nba:demo:2-True-False",
+    "game": {
+      "id": "nba:demo:2",
+      "providerId": "demo:2",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL",
+      "period": 4,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "fd767f4e55964a018099ac1193a8ac165c68ca4c3943003ab347afda628a077f"
+  },
+  {
+    "name": "nba:demo:2-True-True",
+    "game": {
+      "id": "nba:demo:2",
+      "providerId": "demo:2",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL",
+      "period": 4,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "4ab51775ef4b2afc2b3795035084e19a3cee00cec8635b1b944498893cc61fcf"
+  },
+  {
+    "name": "nba:demo:3-False-False",
+    "game": {
+      "id": "nba:demo:3",
+      "providerId": "demo:3",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "2OT",
+      "period": 6,
+      "clock": "2:12"
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "1425d02e3951fe0a5190a9b8a511043d192d7cf1b8af1196ed8b415d83245b68"
+  },
+  {
+    "name": "nba:demo:3-False-True",
+    "game": {
+      "id": "nba:demo:3",
+      "providerId": "demo:3",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "2OT",
+      "period": 6,
+      "clock": "2:12"
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "ee3257caf492a6fcd43d8874b6035f5874d967caaeb502f0694ae8e30ca805a0"
+  },
+  {
+    "name": "nba:demo:3-True-False",
+    "game": {
+      "id": "nba:demo:3",
+      "providerId": "demo:3",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "2OT",
+      "period": 6,
+      "clock": "2:12"
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "fd767f4e55964a018099ac1193a8ac165c68ca4c3943003ab347afda628a077f"
+  },
+  {
+    "name": "nba:demo:3-True-True",
+    "game": {
+      "id": "nba:demo:3",
+      "providerId": "demo:3",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "2OT",
+      "period": 6,
+      "clock": "2:12"
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "4ab51775ef4b2afc2b3795035084e19a3cee00cec8635b1b944498893cc61fcf"
+  },
+  {
+    "name": "nba:demo:4-False-False",
+    "game": {
+      "id": "nba:demo:4",
+      "providerId": "demo:4",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "HALFTIME",
+      "period": 2,
+      "clock": "0:00"
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "c4149e395287053fdc97245a3348933c9e1a39d986ecf81dddf87bf7be831215"
+  },
+  {
+    "name": "nba:demo:4-False-True",
+    "game": {
+      "id": "nba:demo:4",
+      "providerId": "demo:4",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "HALFTIME",
+      "period": 2,
+      "clock": "0:00"
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "17ad58848fea105d5773acd3d182b9a8621bc30afb2d2cd999b2846d25a470fe"
+  },
+  {
+    "name": "nba:demo:4-True-False",
+    "game": {
+      "id": "nba:demo:4",
+      "providerId": "demo:4",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "HALFTIME",
+      "period": 2,
+      "clock": "0:00"
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "fd767f4e55964a018099ac1193a8ac165c68ca4c3943003ab347afda628a077f"
+  },
+  {
+    "name": "nba:demo:4-True-True",
+    "game": {
+      "id": "nba:demo:4",
+      "providerId": "demo:4",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "HALFTIME",
+      "period": 2,
+      "clock": "0:00"
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "4ab51775ef4b2afc2b3795035084e19a3cee00cec8635b1b944498893cc61fcf"
+  },
+  {
+    "name": "nba:demo:5-False-False",
+    "game": {
+      "id": "nba:demo:5",
+      "providerId": "demo:5",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": null
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "POSTPONED",
+      "period": 0,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "6d2df971cfd39a258aea1ddce1bdc623ed9385d4599652acb127e6ed0df2fe42"
+  },
+  {
+    "name": "nba:demo:5-False-True",
+    "game": {
+      "id": "nba:demo:5",
+      "providerId": "demo:5",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": null
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "POSTPONED",
+      "period": 0,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "059fc801897240b1327a35292ffa2f6ce989afdf5a4d5a8a74be6ec5cada720a"
+  },
+  {
+    "name": "nba:demo:5-True-False",
+    "game": {
+      "id": "nba:demo:5",
+      "providerId": "demo:5",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": null
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "POSTPONED",
+      "period": 0,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "ddb847ba0be2857c9f8778369822504051a73518a3112c953d931614084d723a"
+  },
+  {
+    "name": "nba:demo:5-True-True",
+    "game": {
+      "id": "nba:demo:5",
+      "providerId": "demo:5",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": null
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "POSTPONED",
+      "period": 0,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "1b96227cfedcf020e4408dcb8b06b96b5912daf4f34a3ff7433de10ddab94f9d"
+  },
+  {
+    "name": "nba:demo:6-False-False",
+    "game": {
+      "id": "nba:demo:6",
+      "providerId": "demo:6",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "DELAYED",
+      "period": 1,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "7aa1cf5069918105574f8538b2de162a241799492818b3b447c56fd08e335f04"
+  },
+  {
+    "name": "nba:demo:6-False-True",
+    "game": {
+      "id": "nba:demo:6",
+      "providerId": "demo:6",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "DELAYED",
+      "period": 1,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "749843be186145ce90789c91c472ea3dc7e2561b0f722a97e5de8566cbe4e644"
+  },
+  {
+    "name": "nba:demo:6-True-False",
+    "game": {
+      "id": "nba:demo:6",
+      "providerId": "demo:6",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "DELAYED",
+      "period": 1,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "fd767f4e55964a018099ac1193a8ac165c68ca4c3943003ab347afda628a077f"
+  },
+  {
+    "name": "nba:demo:6-True-True",
+    "game": {
+      "id": "nba:demo:6",
+      "providerId": "demo:6",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "DELAYED",
+      "period": 1,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "4ab51775ef4b2afc2b3795035084e19a3cee00cec8635b1b944498893cc61fcf"
+  },
+  {
+    "name": "nba:demo:7-False-False",
+    "game": {
+      "id": "nba:demo:7",
+      "providerId": "demo:7",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL/OT",
+      "period": 5,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "3a8e9e18d8644f58fe58ee38896cb0f57bc5be54b612609203e8d63b89b1dddb"
+  },
+  {
+    "name": "nba:demo:7-False-True",
+    "game": {
+      "id": "nba:demo:7",
+      "providerId": "demo:7",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL/OT",
+      "period": 5,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "50e0f0d4aa9fe289f5b83595286a44972535c7419b6fbc7e35458535ce3f0c7d"
+  },
+  {
+    "name": "nba:demo:7-True-False",
+    "game": {
+      "id": "nba:demo:7",
+      "providerId": "demo:7",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL/OT",
+      "period": 5,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "fd767f4e55964a018099ac1193a8ac165c68ca4c3943003ab347afda628a077f"
+  },
+  {
+    "name": "nba:demo:7-True-True",
+    "game": {
+      "id": "nba:demo:7",
+      "providerId": "demo:7",
+      "league": "nba",
+      "away": {
+        "id": "BOS",
+        "abbr": "BOS",
+        "name": "Boston",
+        "color": "007a33",
+        "score": 118
+      },
+      "home": {
+        "id": "NY",
+        "abbr": "NY",
+        "name": "New York",
+        "color": "006bb6",
+        "score": 123
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL/OT",
+      "period": 5,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "4ab51775ef4b2afc2b3795035084e19a3cee00cec8635b1b944498893cc61fcf"
+  },
+  {
+    "name": "nhl:demo:0-False-False",
+    "game": {
+      "id": "nhl:demo:0",
+      "providerId": "demo:0",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "LIVE",
+      "period": 3,
+      "clock": "4:21"
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "f9b623d3a91fa219d7719145b1f8ce486d0feb7bf26338fd817e92e2c1aa1064"
+  },
+  {
+    "name": "nhl:demo:0-False-True",
+    "game": {
+      "id": "nhl:demo:0",
+      "providerId": "demo:0",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "LIVE",
+      "period": 3,
+      "clock": "4:21"
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "ae2a42a7ed8fffa17f9502ab7af4adf85704adf4a24d4d42a8b83fb3d7e41241"
+  },
+  {
+    "name": "nhl:demo:0-True-False",
+    "game": {
+      "id": "nhl:demo:0",
+      "providerId": "demo:0",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "LIVE",
+      "period": 3,
+      "clock": "4:21"
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "737887e3e51147dc8b527a956e0f709c2ee30382c87f080f38a0e289d1c09582"
+  },
+  {
+    "name": "nhl:demo:0-True-True",
+    "game": {
+      "id": "nhl:demo:0",
+      "providerId": "demo:0",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "LIVE",
+      "period": 3,
+      "clock": "4:21"
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "324c36f5fcb16eaf7518d05d93251ed1c4087656bd67fb9b0a0d12b10fd1d427"
+  },
+  {
+    "name": "nhl:demo:1-False-False",
+    "game": {
+      "id": "nhl:demo:1",
+      "providerId": "demo:1",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": null
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "PREGAME",
+      "period": 0,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "9ef7293f3344812130902f04f2953924050f87da695297d7dfa2c7cce0318a37"
+  },
+  {
+    "name": "nhl:demo:1-False-True",
+    "game": {
+      "id": "nhl:demo:1",
+      "providerId": "demo:1",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": null
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "PREGAME",
+      "period": 0,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "e40c9698b99fe1ee0ca613f999112d48ff18f2eaedcdd9f45c9900ad263a0522"
+  },
+  {
+    "name": "nhl:demo:1-True-False",
+    "game": {
+      "id": "nhl:demo:1",
+      "providerId": "demo:1",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": null
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "PREGAME",
+      "period": 0,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "f645a50f162e76677e0c6d0ee4a60eaedfb7ac8ba2f70f045159b92f1c566bb5"
+  },
+  {
+    "name": "nhl:demo:1-True-True",
+    "game": {
+      "id": "nhl:demo:1",
+      "providerId": "demo:1",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": null
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "PREGAME",
+      "period": 0,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "aea7291d752e55d328c24d795913de3372ffa95e8a66cd97076ad91aef5ec786"
+  },
+  {
+    "name": "nhl:demo:2-False-False",
+    "game": {
+      "id": "nhl:demo:2",
+      "providerId": "demo:2",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL",
+      "period": 3,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "cd28175c369731007e22b4f443e57845fad2dd6c3e6cbab4aabadb72a79a6eae"
+  },
+  {
+    "name": "nhl:demo:2-False-True",
+    "game": {
+      "id": "nhl:demo:2",
+      "providerId": "demo:2",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL",
+      "period": 3,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "77435a661a97cd1de6cde0f81fb24841410c3d53c5f0d6b0c44d3629c84b630e"
+  },
+  {
+    "name": "nhl:demo:2-True-False",
+    "game": {
+      "id": "nhl:demo:2",
+      "providerId": "demo:2",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL",
+      "period": 3,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "737887e3e51147dc8b527a956e0f709c2ee30382c87f080f38a0e289d1c09582"
+  },
+  {
+    "name": "nhl:demo:2-True-True",
+    "game": {
+      "id": "nhl:demo:2",
+      "providerId": "demo:2",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL",
+      "period": 3,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "324c36f5fcb16eaf7518d05d93251ed1c4087656bd67fb9b0a0d12b10fd1d427"
+  },
+  {
+    "name": "nhl:demo:3-False-False",
+    "game": {
+      "id": "nhl:demo:3",
+      "providerId": "demo:3",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "OT",
+      "period": 4,
+      "clock": "2:12"
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "d0ce90de9df199073fe3136137d25ecdcd8e7d039fcf1a7599fb8f953c90af36"
+  },
+  {
+    "name": "nhl:demo:3-False-True",
+    "game": {
+      "id": "nhl:demo:3",
+      "providerId": "demo:3",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "OT",
+      "period": 4,
+      "clock": "2:12"
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "167507d840e797c7aaa5d4e9b22ec87aaaebe1d769b14acd13264d757263238a"
+  },
+  {
+    "name": "nhl:demo:3-True-False",
+    "game": {
+      "id": "nhl:demo:3",
+      "providerId": "demo:3",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "OT",
+      "period": 4,
+      "clock": "2:12"
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "737887e3e51147dc8b527a956e0f709c2ee30382c87f080f38a0e289d1c09582"
+  },
+  {
+    "name": "nhl:demo:3-True-True",
+    "game": {
+      "id": "nhl:demo:3",
+      "providerId": "demo:3",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "OT",
+      "period": 4,
+      "clock": "2:12"
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "324c36f5fcb16eaf7518d05d93251ed1c4087656bd67fb9b0a0d12b10fd1d427"
+  },
+  {
+    "name": "nhl:demo:4-False-False",
+    "game": {
+      "id": "nhl:demo:4",
+      "providerId": "demo:4",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "INTERMISSION",
+      "period": 2,
+      "clock": "0:00"
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "4aaf20b098f13d17cac922c246c29814c8a7273ec643a0106bccbd27d2af22df"
+  },
+  {
+    "name": "nhl:demo:4-False-True",
+    "game": {
+      "id": "nhl:demo:4",
+      "providerId": "demo:4",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "INTERMISSION",
+      "period": 2,
+      "clock": "0:00"
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "799b3e91cf9bd235cabc81dd6551fe7b67471fe84dec3648c9b8149f9721e3ad"
+  },
+  {
+    "name": "nhl:demo:4-True-False",
+    "game": {
+      "id": "nhl:demo:4",
+      "providerId": "demo:4",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "INTERMISSION",
+      "period": 2,
+      "clock": "0:00"
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "737887e3e51147dc8b527a956e0f709c2ee30382c87f080f38a0e289d1c09582"
+  },
+  {
+    "name": "nhl:demo:4-True-True",
+    "game": {
+      "id": "nhl:demo:4",
+      "providerId": "demo:4",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "INTERMISSION",
+      "period": 2,
+      "clock": "0:00"
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "324c36f5fcb16eaf7518d05d93251ed1c4087656bd67fb9b0a0d12b10fd1d427"
+  },
+  {
+    "name": "nhl:demo:5-False-False",
+    "game": {
+      "id": "nhl:demo:5",
+      "providerId": "demo:5",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": null
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "POSTPONED",
+      "period": 0,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "e9e05d0e9fe2954d10914ac1b290e65b60fdfa1b8e9edce9e0795d8fed96fe05"
+  },
+  {
+    "name": "nhl:demo:5-False-True",
+    "game": {
+      "id": "nhl:demo:5",
+      "providerId": "demo:5",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": null
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "POSTPONED",
+      "period": 0,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "5928905427a424e9e17d867dc5d079addfdf8cd352cdc460b5b30775171ee4e4"
+  },
+  {
+    "name": "nhl:demo:5-True-False",
+    "game": {
+      "id": "nhl:demo:5",
+      "providerId": "demo:5",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": null
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "POSTPONED",
+      "period": 0,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "f645a50f162e76677e0c6d0ee4a60eaedfb7ac8ba2f70f045159b92f1c566bb5"
+  },
+  {
+    "name": "nhl:demo:5-True-True",
+    "game": {
+      "id": "nhl:demo:5",
+      "providerId": "demo:5",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": null
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": null
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "pre",
+      "completed": false,
+      "status": "POSTPONED",
+      "period": 0,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "aea7291d752e55d328c24d795913de3372ffa95e8a66cd97076ad91aef5ec786"
+  },
+  {
+    "name": "nhl:demo:6-False-False",
+    "game": {
+      "id": "nhl:demo:6",
+      "providerId": "demo:6",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "DELAYED",
+      "period": 1,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "892399db88a40f8113cba80449587572e2d3f55e50e71a906223aff888db5ca3"
+  },
+  {
+    "name": "nhl:demo:6-False-True",
+    "game": {
+      "id": "nhl:demo:6",
+      "providerId": "demo:6",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "DELAYED",
+      "period": 1,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "d2e0a3e8effc07acfac6aaeb5fb839fc752a148c0eca01882d7c186648286291"
+  },
+  {
+    "name": "nhl:demo:6-True-False",
+    "game": {
+      "id": "nhl:demo:6",
+      "providerId": "demo:6",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "DELAYED",
+      "period": 1,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "737887e3e51147dc8b527a956e0f709c2ee30382c87f080f38a0e289d1c09582"
+  },
+  {
+    "name": "nhl:demo:6-True-True",
+    "game": {
+      "id": "nhl:demo:6",
+      "providerId": "demo:6",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "DELAYED",
+      "period": 1,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "324c36f5fcb16eaf7518d05d93251ed1c4087656bd67fb9b0a0d12b10fd1d427"
+  },
+  {
+    "name": "nhl:demo:7-False-False",
+    "game": {
+      "id": "nhl:demo:7",
+      "providerId": "demo:7",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL/SO",
+      "period": 5,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "4c83c5640aee6598f8e40dae1e2b99b7eea4713a4e99ec665ca876dfb8050bba"
+  },
+  {
+    "name": "nhl:demo:7-False-True",
+    "game": {
+      "id": "nhl:demo:7",
+      "providerId": "demo:7",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL/SO",
+      "period": 5,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "42676f5625f15a71a2bb21de9cc4000de017e2ff129fb38afca6cb847b2ebaab"
+  },
+  {
+    "name": "nhl:demo:7-True-False",
+    "game": {
+      "id": "nhl:demo:7",
+      "providerId": "demo:7",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL/SO",
+      "period": 5,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "737887e3e51147dc8b527a956e0f709c2ee30382c87f080f38a0e289d1c09582"
+  },
+  {
+    "name": "nhl:demo:7-True-True",
+    "game": {
+      "id": "nhl:demo:7",
+      "providerId": "demo:7",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "post",
+      "completed": true,
+      "status": "FINAL/SO",
+      "period": 5,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "324c36f5fcb16eaf7518d05d93251ed1c4087656bd67fb9b0a0d12b10fd1d427"
+  },
+  {
+    "name": "nhl:demo:8-False-False",
+    "game": {
+      "id": "nhl:demo:8",
+      "providerId": "demo:8",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "SO",
+      "period": 5,
+      "clock": null
+    },
+    "stale": false,
+    "held": false,
+    "sha256": "6d26506456643f2f80f98a1b2392ae26a0428e1c266efbab043b6cf67e12c32d"
+  },
+  {
+    "name": "nhl:demo:8-False-True",
+    "game": {
+      "id": "nhl:demo:8",
+      "providerId": "demo:8",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "SO",
+      "period": 5,
+      "clock": null
+    },
+    "stale": false,
+    "held": true,
+    "sha256": "5b573bd4187b662afbd461fc8c5de08b62293428a0cd4f44da35dac62cccc157"
+  },
+  {
+    "name": "nhl:demo:8-True-False",
+    "game": {
+      "id": "nhl:demo:8",
+      "providerId": "demo:8",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "SO",
+      "period": 5,
+      "clock": null
+    },
+    "stale": true,
+    "held": false,
+    "sha256": "737887e3e51147dc8b527a956e0f709c2ee30382c87f080f38a0e289d1c09582"
+  },
+  {
+    "name": "nhl:demo:8-True-True",
+    "game": {
+      "id": "nhl:demo:8",
+      "providerId": "demo:8",
+      "league": "nhl",
+      "away": {
+        "id": "FLA",
+        "abbr": "FLA",
+        "name": "Florida",
+        "color": "c8102e",
+        "score": 2
+      },
+      "home": {
+        "id": "NYR",
+        "abbr": "NYR",
+        "name": "New York",
+        "color": "0038a8",
+        "score": 3
+      },
+      "date": "2026-10-24T23:30:00Z",
+      "state": "in",
+      "completed": false,
+      "status": "SO",
+      "period": 5,
+      "clock": null
+    },
+    "stale": true,
+    "held": true,
+    "sha256": "324c36f5fcb16eaf7518d05d93251ed1c4087656bd67fb9b0a0d12b10fd1d427"
+  },
+  {
+    "name": "empty-False",
+    "game": null,
+    "stale": false,
+    "held": false,
+    "sha256": "f92ec5e5c9b2a1b1fc3323bbb6565d3581b3fe45b1feb5c5b9b3790471448eb2"
+  },
+  {
+    "name": "empty-True",
+    "game": null,
+    "stale": true,
+    "held": false,
+    "sha256": "1e28c25031432547ec971eb5ae8e3a4e26910124beef43eda714de25497a85af"
+  }
+]

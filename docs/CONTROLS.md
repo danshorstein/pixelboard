@@ -35,7 +35,7 @@ During quiet hours the first press only wakes the board. Press again to act.
 ## Main menu
 
 Select opens the menu: **Scoreboard**, **Arcade Games**, **Settings**,
-**NFL Settings**, **Pick NFL Games**, **NFL Favorites**, **Past Scores** and
+**NFL Settings**, **Pick NFL Games**, **NFL Favorites**, **Past Scores**, **Sports** and
 **Home Clock**.
 
 - Up/Down chooses, A opens, B goes back. Select or B from the top closes the
@@ -44,11 +44,12 @@ Select opens the menu: **Scoreboard**, **Arcade Games**, **Settings**,
   Unsaved changes are dropped after 60 seconds without input or if the
   controller disconnects.
 - In the NFL pages, A toggles a choice. Pick **Save Changes** to keep them.
+- In **Sports**, toggle leagues or the local team calendar, then choose **Save Changes**. Complete per-sport team lists are in the dashboard.
 
 ## Past scores
 
 Select → **Past Scores** → A opens a date picker. Left/Right moves a day and
-L/R moves a week. A shows every final MLB and NFL game for that date, then A
+L/R moves a week. A shows final games from the enabled sports and selected teams for that date, then A
 advances, B holds, and X returns to live scores. Past scores go back to live
 after 10 minutes.
 

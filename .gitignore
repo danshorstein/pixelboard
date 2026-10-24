@@ -16,3 +16,6 @@ hardware/**/renders/_temp_render.stl
 
 # macOS folder metadata
 .DS_Store
+
+# Worktree Python environment symlink
+.venv

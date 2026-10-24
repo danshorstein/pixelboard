@@ -5,6 +5,7 @@ from datetime import date, datetime, timedelta
 from scoreboard_device.history import date_label
 from time import monotonic
 from shared_py.nfl_feed import NFL_TEAMS
+from shared_py.sports import LEAGUES, sports_settings
 from shared_py.reveal_frame import create_reveal_text_frame
 
 LAYOUTS = ("classic", "broadcastRows", "broadcastLogos")
@@ -28,7 +29,8 @@ class ControllerSettings:
 
     @property
     def labels(self):
-        if self.page == 'main': return ('SCOREBOARD', 'ARCADE GAMES', 'SETTINGS', 'NFL SETTINGS', 'PICK NFL GAMES', 'NFL FAVORITES', 'PAST SCORES', 'HOME CLOCK')
+        if self.page == 'main': return ('SCOREBOARD', 'ARCADE GAMES', 'SETTINGS', 'NFL SETTINGS', 'PICK NFL GAMES', 'NFL FAVORITES', 'PAST SCORES', 'SPORTS', 'HOME CLOCK')
+        if self.page == 'sports': return ('MLB', 'NFL', 'NBA', 'NHL', 'TEAM CALENDAR', 'SAVE CHANGES')
         if self.page == 'nfl': return ('NFL SCORES','SECONDS PER GAME','FAVORITES ONLY','LIVE FIRST','ONLY LIVE','HIDE FINALS','NFL LAYOUT','SAVE CHANGES')
         if self.page == 'games': return ('SHOW ALL', *[g['away']['abbr']+' @ '+g['home']['abbr'] for g in self.games], 'SAVE CHANGES')
         if self.page == 'teams': return (*NFL_TEAMS, 'SAVE CHANGES')
@@ -40,6 +42,8 @@ class ControllerSettings:
         self.page = "main"
         self.games = deepcopy(list(games))
         self.draft = deepcopy(config)
+        self.draft['sports'] = sports_settings(config)
+        self.initial_sports = deepcopy(self.draft['sports'])
         self.active = True
         self.preview = False
         self.index = 0
@@ -66,9 +70,17 @@ class ControllerSettings:
             elif button == 'a':
                 if self.index == 0: self.close(); return 'scoreboard'
                 elif self.index == 1: self.close(); return 'arcade'
-                elif self.index == 7: self.close(); return 'home'
+                elif self.index == 7: self.page = 'sports'; self.index = 0
+                elif self.index == 8: self.close(); return 'home'
                 elif self.index == 6: self.page = 'history'; self.index = 0
                 else: self.page = ('settings','nfl','games','teams')[self.index-2]; self.index=0
+        elif self.page == 'sports':
+            if button in ('up', 'down'): self.index = (self.index + (1 if button=='down' else -1)) % 6
+            elif button in ('a', 'left', 'right'):
+                if self.index == 5: return 'save'
+                league = LEAGUES[self.index]
+                self.draft['sports'][league]['enabled'] = not self.draft['sports'][league]['enabled']
+                if league == 'nfl': self.draft['nfl']['enabled'] = self.draft['sports']['nfl']['enabled']
         elif self.page == 'history':
             if button in ('left','right','l','r'):
                 delta = {'left':-1,'right':1,'l':-7,'r':7}[button]
@@ -126,8 +138,10 @@ class ControllerSettings:
                 d['wakeDurationSec'] = choices[(choices.index(value) + delta) % len(choices)]
 
     def payload(self):
-        return {'expectedVersion': self.draft['version'], **{
+        payload = {'expectedVersion': self.draft['version'], **{
             key: deepcopy(self.draft[key]) for key in ('brightness', 'quietHours', 'layoutPreset', 'wakeDurationSec', 'nfl')}}
+        if self.draft['sports'] != self.initial_sports: payload['sports'] = deepcopy(self.draft['sports'])
+        return payload
 
     def frame(self, font, width=128, height=32):
         d = self.draft
@@ -137,6 +151,8 @@ class ControllerSettings:
         if self.page != 'settings':
             value = 'A OPEN B BACK'
             n = d['nfl']
+            if self.page == 'sports' and self.index < 5:
+                value = 'ON' if d['sports'][LEAGUES[self.index]]['enabled'] else 'OFF'
             if self.page == 'nfl' and self.index < 7:
                 value = str(n[('enabled','dwellSec','favoritesOnly','liveFirst','liveOnly','hideFinal','layout')[self.index]]).upper()
                 if value in ('TRUE','FALSE'): value = 'ON' if value=='TRUE' else 'OFF'

@@ -88,6 +88,12 @@
       "items": {
         "$ref": "#/properties/frames/items"
       }
+    },
+    "sportsFrames": {
+      "type": "array",
+      "items": {
+        "$ref": "#/properties/frames/items"
+      }
     }
   }
 }

@@ -115,6 +115,7 @@ def _input_digest(
         ROOT / "fixtures/nfl-demo.json",
         ROOT / "fixtures/nfl-frame-hashes.json",
         ROOT / "fixtures/nfl-logo-frame-hashes.json",
+        ROOT / "fixtures/sports-frame-cases.json",
         ROOT / "fixtures/expected-playlist.json",
         ROOT / "fixtures/expected-mixed-playlist.json",
     ):
@@ -270,6 +271,7 @@ class BuildStore:
                     "nfl-demo.json",
                     "nfl-frame-hashes.json",
                     "nfl-logo-frame-hashes.json",
+                    "sports-frame-cases.json",
                     "expected-playlist.json",
                     "expected-mixed-playlist.json",
                 ):
